@@ -3,7 +3,7 @@ import BlogLayout from '@/components/BlogLayout';
 export const metadata: Metadata = { title: 'How to Use a Ruler: Step-by-Step Guide', description: 'Master the art of using a ruler with our step-by-step guide. Learn proper technique for accurate measurements every time.', keywords: ['how to use a ruler', 'ruler guide', 'measuring technique', 'ruler tutorial', 'measurement tips'], alternates: { canonical: 'https://online-ruler.onl/blog/how-to-use-a-ruler' } };
 export default function HowToUseARuler() {
   return (
-    <BlogLayout currentUrl="/blog/how-to-use-a-ruler" publishDate="April 28, 2025">
+    <BlogLayout currentUrl="/blog/how-to-use-a-ruler" publishDate="April 28, 2025" imageUrl="/lovable-uploads/381e2e34-ef77-4b15-a19c-117866a61d42.jpg" imageAlt="Metal ruler being aligned for technical blueprint drafting">
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">How to Use a Ruler: Step-by-Step Guide</h1>
       <p className="lead">Whether physical or digital, a ruler is one of the most essential measurement tools. Here&apos;s how to use one correctly for precise results every time.</p>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Choosing the Right Ruler</h2>

@@ -11,9 +11,11 @@ interface BlogLayoutProps {
   children: React.ReactNode;
   currentUrl: string;
   publishDate: string;
+  imageUrl?: string;
+  imageAlt?: string;
 }
 
-const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDate }) => {
+const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDate, imageUrl, imageAlt }) => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
@@ -37,6 +39,11 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDa
             </div>
             
             <article className="prose prose-sm sm:prose lg:prose-lg max-w-none">
+              {imageUrl && (
+                <div className="relative rounded-lg overflow-hidden mb-8 max-h-[400px]">
+                  <img src={imageUrl} alt={imageAlt || ""} className="w-full h-auto object-cover" />
+                </div>
+              )}
               {children}
             </article>
             

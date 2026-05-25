@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function HowToMeasureOnPhone() {
   return (
-    <BlogLayout currentUrl="/blog/how-to-measure-on-phone" publishDate="April 18, 2025">
+    <BlogLayout currentUrl="/blog/how-to-measure-on-phone" publishDate="April 18, 2025" imageUrl="/lovable-uploads/regla-dibujo.jpg" imageAlt="Drawing and measuring dimensions on a screen">
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">How to Measure on Your Phone Screen</h1>
       <p className="lead">Your smartphone can double as a precise measurement tool. Learn how to turn your phone into a <strong>ruler on phone</strong> for accurate measurements anytime, anywhere.</p>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Why Use Your Phone as a Ruler?</h2>

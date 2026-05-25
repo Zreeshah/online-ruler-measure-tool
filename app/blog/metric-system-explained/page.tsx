@@ -3,7 +3,7 @@ import BlogLayout from '@/components/BlogLayout';
 export const metadata: Metadata = { title: 'The Metric System Explained: A Complete Guide', description: 'Everything you need to know about the metric system. History, units, prefixes, and how to use metric measurements effectively.', keywords: ['metric system', 'SI units', 'measurement', 'meters', 'metric prefixes'], alternates: { canonical: 'https://online-ruler.onl/blog/metric-system-explained' } };
 export default function MetricSystemExplained() {
   return (
-    <BlogLayout currentUrl="/blog/metric-system-explained" publishDate="April 20, 2025">
+    <BlogLayout currentUrl="/blog/metric-system-explained" publishDate="April 20, 2025" imageUrl="/lovable-uploads/sistema-metrico-ventajas.jpg" imageAlt="Visualizing the advantages of the decimal metric system">
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">The Metric System Explained: A Complete Guide</h1>
       <p className="lead">The metric system is the international standard for measurement, used by virtually every country in the world for science, commerce, and everyday life.</p>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">History of the Metric System</h2>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function HowToReadARuler() {
   return (
-    <BlogLayout currentUrl="/blog/how-to-read-a-ruler" publishDate="April 13, 2025">
+    <BlogLayout currentUrl="/blog/how-to-read-a-ruler" publishDate="April 13, 2025" imageUrl="/lovable-uploads/regla-midiendo.jpg" imageAlt="Ruler measuring an object precisely">
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">How to Read a Ruler: Complete Guide</h1>
       <p className="lead">Reading a ruler may seem simple, but understanding all the markings and measurements requires some practice. This comprehensive guide will teach you how to read both metric and imperial rulers with confidence.</p>
       

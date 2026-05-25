@@ -3,7 +3,7 @@ import BlogLayout from '@/components/BlogLayout';
 export const metadata: Metadata = { title: 'Dimensionless Numbers: What They Are & Examples', description: 'Learn about dimensionless numbers in physics and engineering. Reynolds number, Mach number, and more explained with practical examples.', keywords: ['dimensionless numbers', 'Reynolds number', 'Mach number', 'physics', 'engineering'], alternates: { canonical: 'https://online-ruler.onl/blog/dimensionless-numbers' } };
 export default function DimensionlessNumbers() {
   return (
-    <BlogLayout currentUrl="/blog/dimensionless-numbers" publishDate="April 22, 2025">
+    <BlogLayout currentUrl="/blog/dimensionless-numbers" publishDate="April 22, 2025" imageUrl="/lovable-uploads/numeros-adimensionales.jpg" imageAlt="Abstract scientific visualization of physical fluid dynamics and dimensionless numbers">
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Dimensionless Numbers: What They Are & Examples</h1>
       <p className="lead">Dimensionless numbers are quantities without physical units that play crucial roles in physics, engineering, and fluid mechanics. They help compare different physical systems and predict behavior.</p>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">What Are Dimensionless Numbers?</h2>

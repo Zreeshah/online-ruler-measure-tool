@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function MetricVsImperial() {
   return (
-    <BlogLayout currentUrl="/blog/metric-vs-imperial" publishDate="April 15, 2025">
+    <BlogLayout currentUrl="/blog/metric-vs-imperial" publishDate="April 15, 2025" imageUrl="/lovable-uploads/sistema-anglosajón.jpg" imageAlt="Comparison of metric and imperial measurement tools">
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Metric vs Imperial: Understanding Measurement Systems</h1>
       <p className="lead">The world uses two main measurement systems: metric and imperial. Understanding both is essential for science, engineering, travel, and everyday life.</p>
       
