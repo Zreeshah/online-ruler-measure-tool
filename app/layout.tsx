@@ -55,6 +55,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <head>
         <meta name="theme-color" content="#9b87f5" />
+        <meta name="google-site-verification" content="t4sbaaYfWZd2Kmm3GtdUc3wUUSUcVs7sQKKPNLXHRzI" />
         <style dangerouslySetInnerHTML={{
           __html: `
             :root {
