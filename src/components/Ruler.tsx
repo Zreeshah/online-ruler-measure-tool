@@ -6,7 +6,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Maximize, 
   Minimize, 
-  RefreshCw, 
   ChevronDown, 
   Monitor
 } from 'lucide-react';
@@ -59,28 +58,23 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
     setOrientation,
     getValueInSelectedUnit,
     getPixelsFromValue,
-    calibrateByScreen,
-    autoCalibrate
+    calibrateByScreen
   } = useCalibration();
   
   const { t } = useLanguage();
   
   const rulerRef = useRef<HTMLDivElement>(null);
   const [rulerWidth, setRulerWidth] = useState(0);
-  const [rulerHeight, setRulerHeight] = useState(0);
+  const [rulerHeight, setRulerHeight] = useState(140);
   const [customScreenSize, setCustomScreenSize] = useState('15.6');
   const [screenSizeDropdownOpen, setScreenSizeDropdownOpen] = useState(false);
-  
-  useEffect(() => {
-    autoCalibrate();
-  }, []);
   
   useEffect(() => {
     const updateRulerDimensions = () => {
       if (orientation === 'horizontal') {
         // Take full viewport width minus some padding
         setRulerWidth(window.innerWidth);
-        setRulerHeight(120);
+        setRulerHeight(140);
       } else {
         setRulerHeight(Math.min(window.innerHeight * 0.7, 500));
         setRulerWidth(120);
@@ -172,7 +166,7 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
   const ticks = generateTicks();
 
   const rulerStyle = {
-    width: orientation === 'horizontal' ? `${rulerWidth}px` : `${rulerWidth}px`,
+    width: orientation === 'horizontal' ? '100%' : `${rulerWidth}px`,
     height: orientation === 'vertical' ? `${rulerHeight}px` : `${rulerHeight}px`,
     backgroundColor: '#F5F7FA',
     position: 'relative' as const,
@@ -188,13 +182,12 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
       ref={rulerRef}
       style={rulerStyle}
     >
-      {/* Control Buttons Group - Positioned above the ruler */}
-      <div className="absolute -top-12 left-0 flex flex-wrap gap-2 z-10">
+      <div className="absolute bottom-3 right-2 z-10 flex flex-wrap gap-2">
         <div className="flex space-x-1">
           <Button
             variant={orientation === 'horizontal' ? 'default' : 'outline'}
             size="sm"
-            className={`${orientation === 'horizontal' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} rounded-md text-xs`}
+            className={`${orientation === 'horizontal' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} min-h-11 rounded-md text-xs`}
             onClick={() => setOrientation('horizontal')}
             title={t('horizontal')}
           >
@@ -205,7 +198,7 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
           <Button
             variant={orientation === 'vertical' ? 'default' : 'outline'}
             size="sm"
-            className={`${orientation === 'vertical' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} rounded-md text-xs`}
+            className={`${orientation === 'vertical' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} min-h-11 rounded-md text-xs`}
             onClick={() => setOrientation('vertical')}
             title={t('vertical')}
           >
@@ -213,23 +206,12 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
             {t('vertical')}
           </Button>
           
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-white rounded-md text-xs"
-            onClick={autoCalibrate}
-            title={t('autoCalibrate')}
-          >
-            <RefreshCw size={16} className="mr-1" />
-            {t('autoCalibrate')}
-          </Button>
-          
           <DropdownMenu open={screenSizeDropdownOpen} onOpenChange={setScreenSizeDropdownOpen}>
             <DropdownMenuTrigger asChild>
               <Button
                 variant="outline"
                 size="sm"
-                className="bg-white rounded-md text-xs flex items-center"
+                className="min-h-11 bg-white rounded-md text-xs flex items-center"
                 title={t('screenSize')}
               >
                 <Monitor size={16} className="mr-1" />
@@ -246,10 +228,10 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
                     step="0.1"
                     value={customScreenSize}
                     onChange={(e) => setCustomScreenSize(e.target.value)}
-                    className="h-8 text-sm"
+                    className="min-h-11 text-sm"
                     placeholder={t('screenSize') || ""}
                   />
-                  <Button type="submit" size="sm" className="h-8 bg-[#9b87f5] hover:bg-[#7E69AB]">
+                  <Button type="submit" size="sm" className="min-h-11 bg-[#9b87f5] hover:bg-[#7E69AB]">
                     OK
                   </Button>
                 </form>
@@ -351,11 +333,11 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
         </div>
 
         {/* Unit buttons - Positioned below the ruler */}
-        <div className={`absolute flex space-x-1 ${orientation === 'horizontal' ? 'bottom-2 left-2' : 'bottom-2 right-2'}`}>
+        <div className={`absolute flex space-x-1 ${orientation === 'horizontal' ? 'bottom-3 left-2' : 'bottom-2 right-2'}`}>
           <Button 
             variant={unit === 'cm' ? 'default' : 'outline'} 
             size="sm" 
-            className={`${unit === 'cm' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} h-6 text-[10px] px-2`}
+            className={`${unit === 'cm' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} min-h-11 min-w-11 text-xs px-2`}
             onClick={() => setUnit('cm')}
           >
             CM
@@ -363,7 +345,7 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
           <Button 
             variant={unit === 'mm' ? 'default' : 'outline'} 
             size="sm" 
-            className={`${unit === 'mm' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} h-6 text-[10px] px-2`}
+            className={`${unit === 'mm' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} min-h-11 min-w-11 text-xs px-2`}
             onClick={() => setUnit('mm')}
           >
             MM
@@ -371,7 +353,7 @@ const Ruler: React.FC<RulerProps> = ({ className }) => {
           <Button 
             variant={unit === 'inch' ? 'default' : 'outline'} 
             size="sm" 
-            className={`${unit === 'inch' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} h-6 text-[10px] px-2`}
+            className={`${unit === 'inch' ? 'bg-[#9b87f5] hover:bg-[#7E69AB]' : 'bg-white'} min-h-11 min-w-11 text-xs px-2`}
             onClick={() => setUnit('inch')}
           >
             IN

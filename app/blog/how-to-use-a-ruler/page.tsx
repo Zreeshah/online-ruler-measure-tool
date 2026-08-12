@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import BlogLayout from '@/components/BlogLayout';
-export const metadata: Metadata = { title: 'How to Use a Ruler: Step-by-Step Guide', description: 'Master the art of using a ruler with our step-by-step guide. Learn proper technique for accurate measurements every time.', keywords: ['how to use a ruler', 'ruler guide', 'measuring technique', 'ruler tutorial', 'measurement tips'], alternates: { canonical: 'https://online-ruler.onl/blog/how-to-use-a-ruler' } };
+import { createPageMetadata } from '@/lib/seo';
+export const metadata: Metadata = createPageMetadata({ title: 'How to Use a Ruler: Step-by-Step Guide', description: 'Master the art of using a ruler with our step-by-step guide. Learn proper technique for accurate measurements every time.', keywords: ['how to use a ruler', 'ruler guide', 'measuring technique', 'ruler tutorial', 'measurement tips'], path: '/blog/how-to-use-a-ruler', type: 'article' });
 export default function HowToUseARuler() {
   return (
     <BlogLayout currentUrl="/blog/how-to-use-a-ruler" publishDate="April 28, 2025" imageUrl="/lovable-uploads/381e2e34-ef77-4b15-a19c-117866a61d42.jpg" imageAlt="Metal ruler being aligned for technical blueprint drafting">
@@ -29,8 +30,28 @@ export default function HowToUseARuler() {
         <li>Hold the ruler firmly with one hand.</li>
         <li>Draw along the edge with your other hand.</li>
       </ol>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Check the Instrument Before You Measure</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li>Check that the edge is straight and that the zero mark is readable.</li>
+        <li>Confirm whether the scale is metric, inches, or dual-unit before recording a value.</li>
+        <li>Choose a ruler whose smallest division is suitable for the decision you need to make.</li>
+        <li>Use a flexible tape for curves and an appropriate caliper or gauge when geometry cannot be reached by a flat ruler.</li>
+      </ul>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Repeat and Report the Measurement</h2>
+      <p>Measure at least twice for an important task. If the readings differ, check alignment, movement, viewing angle, and the condition of the object and ruler. Record the value with its unit and avoid adding decimal places that the scale cannot support.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Worked Example</h2>
+      <p>Suppose the object begins at 0 and ends at the third small division after 6 cm on a millimetre ruler. The result is 6 cm + 3 mm = <strong>6.3 cm</strong>, or <strong>63 mm</strong>. If the object instead starts at 1 cm and ends at 7.3 cm, subtract the starting value: 7.3 cm − 1.0 cm = 6.3 cm.</p>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Using Our Online Ruler</h2>
-      <p>Visit Online-Ruler.Onl for a calibrated digital ruler that works on any device. Simply calibrate once using a credit card or by entering your screen size, then measure with confidence!</p>
+      <p>Open Online-Ruler.Onl, keep browser zoom at 100%, and calibrate the current display with a standard card or known screen diagonal. Recalibrate after changing displays or scaling settings, and verify important results with a physical ruler.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Primary Sources</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li><a href="https://www.nist.gov/pml/owm/si-units-length" rel="noopener noreferrer">NIST: SI Units—Length</a></li>
+        <li><a href="https://www.bipm.org/en/measurement-units" rel="noopener noreferrer">BIPM: SI measurement units</a></li>
+      </ul>
     </BlogLayout>
   );
 }

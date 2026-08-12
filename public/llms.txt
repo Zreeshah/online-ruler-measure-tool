@@ -1,0 +1,26 @@
+# Online-Ruler.Onl
+
+Canonical site: https://www.online-ruler.onl/
+
+Online-Ruler.Onl is a free browser-based screen ruler. The initial scale is an estimate. Users must calibrate the current display with a standard 85.60 mm ID-1 bank card or a manufacturer-listed display diagonal before relying on physical-size readings. Browser zoom should remain at 100%. Critical measurements require a suitable certified physical instrument.
+
+## Primary pages
+
+- Screen ruler and calibration: https://www.online-ruler.onl/
+- Printable ruler with 100 mm scale check: https://www.online-ruler.onl/print-ruler
+- Measurement guides: https://www.online-ruler.onl/blog
+- Measurement and editorial methodology: https://www.online-ruler.onl/about
+- Privacy policy: https://www.online-ruler.onl/privacy
+- Measurement limitations: https://www.online-ruler.onl/disclaimer
+
+## Core guides
+
+- How to read a ruler: https://www.online-ruler.onl/blog/how-to-read-a-ruler
+- How to use a ruler: https://www.online-ruler.onl/blog/how-to-use-a-ruler
+- How to measure on a phone: https://www.online-ruler.onl/blog/how-to-measure-on-phone
+- Metric vs U.S. customary measurement: https://www.online-ruler.onl/blog/metric-vs-imperial
+- Measurement units guide: https://www.online-ruler.onl/blog/measurement-units-guide
+
+## Editorial notes
+
+Measurement content is maintained by the Online Ruler Editorial Team. Standards-based unit definitions prioritize primary sources from NIST and BIPM. Corrections can be submitted through https://www.online-ruler.onl/contact.

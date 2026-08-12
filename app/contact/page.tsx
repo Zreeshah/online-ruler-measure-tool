@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import ContactPageClient from './ContactPageClient';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Contact',
-  description: 'Contact us for any questions or suggestions about our online ruler tool.',
-  alternates: { canonical: 'https://online-ruler.onl/contact' },
-};
+  description: 'Email the Online Ruler team with questions, corrections, accessibility reports, or device-test feedback.',
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return <ContactPageClient />;

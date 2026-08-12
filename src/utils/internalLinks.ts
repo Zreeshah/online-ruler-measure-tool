@@ -21,7 +21,7 @@ export const blogArticles: ArticleLink[] = [
   },
   {
     url: "/blog/depth-gauge-guide",
-    title: "Depth Gauge: What It Is, Types & How to Use It",
+    title: "Depth Gauge Types and Basic Use",
     keywords: ["gauge", "depth", "instrument", "measurement", "precision"]
   },
   {
@@ -36,7 +36,7 @@ export const blogArticles: ArticleLink[] = [
   },
   {
     url: "/blog/metric-vs-imperial",
-    title: "Metric vs Imperial: Understanding Measurement Systems",
+    title: "Metric vs U.S. Customary Measurement",
     keywords: ["metric", "imperial", "conversion", "measurement", "units"]
   },
   {
@@ -71,7 +71,7 @@ export const blogArticles: ArticleLink[] = [
   },
   {
     url: "/blog/imperial-measurement-system",
-    title: "Imperial Measurement System: Complete Guide",
+    title: "British Imperial and U.S. Customary Units",
     keywords: ["imperial", "measurement", "system", "units", "conversion"]
   }
 ];
@@ -81,14 +81,14 @@ export const getRelatedArticles = (currentUrl: string, count: number = 2): Artic
   const currentArticle = blogArticles.find(article => article.url === currentUrl);
   
   if (!currentArticle) {
-    // If current article not found, return the homepage and some random articles
+    // If current article is not found, return the first distinct guides.
     const filtered = blogArticles.filter(article => article.url !== "/");
-    return [blogArticles[0], ...filtered.slice(0, count - 1)];
+    return filtered.slice(0, count);
   }
   
   // Score articles by keyword overlap
   const scored = blogArticles
-    .filter(article => article.url !== currentUrl)
+    .filter(article => article.url !== currentUrl && article.url !== "/")
     .map(article => {
       const commonKeywords = article.keywords.filter(keyword => 
         currentArticle.keywords.includes(keyword)
@@ -101,15 +101,7 @@ export const getRelatedArticles = (currentUrl: string, count: number = 2): Artic
     })
     .sort((a, b) => b.score - a.score);
   
-  // Always include homepage as one of the links if current page isn't homepage
-  const homepage = blogArticles.find(article => article.url === "/");
-  const relatedArticles = scored.map(item => item.article).slice(0, homepage && currentUrl !== "/" ? count - 1 : count);
-  
-  if (homepage && currentUrl !== "/") {
-    relatedArticles.unshift(homepage);
-  }
-  
-  return relatedArticles;
+  return scored.map(item => item.article).slice(0, count);
 };
 
 // Generate a contextual link with surrounding text

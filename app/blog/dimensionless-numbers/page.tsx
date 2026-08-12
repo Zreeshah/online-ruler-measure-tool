@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import BlogLayout from '@/components/BlogLayout';
-export const metadata: Metadata = { title: 'Dimensionless Numbers: What They Are & Examples', description: 'Learn about dimensionless numbers in physics and engineering. Reynolds number, Mach number, and more explained with practical examples.', keywords: ['dimensionless numbers', 'Reynolds number', 'Mach number', 'physics', 'engineering'], alternates: { canonical: 'https://online-ruler.onl/blog/dimensionless-numbers' } };
+import { createPageMetadata } from '@/lib/seo';
+export const metadata: Metadata = createPageMetadata({ title: 'Dimensionless Numbers: What They Are & Examples', description: 'Learn about dimensionless numbers in physics and engineering. Reynolds number, Mach number, and more explained with practical examples.', keywords: ['dimensionless numbers', 'Reynolds number', 'Mach number', 'physics', 'engineering'], path: '/blog/dimensionless-numbers', type: 'article' });
 export default function DimensionlessNumbers() {
   return (
     <BlogLayout currentUrl="/blog/dimensionless-numbers" publishDate="April 22, 2025" imageUrl="/lovable-uploads/numeros-adimensionales.jpg" imageAlt="Abstract scientific visualization of physical fluid dynamics and dimensionless numbers">

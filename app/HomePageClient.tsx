@@ -1,13 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Ruler from '@/components/Ruler';
 import MobileRuler from '@/components/MobileRuler';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useCalibration } from '@/contexts/CalibrationContext';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { Card, CardContent } from '@/components/ui/card';
 import { Ruler as RulerIcon, Maximize, Square, Pencil, Book, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -17,6 +15,7 @@ import reglaOnline from '@/assets/regla-online.jpg';
 import reglaPrecision from '@/assets/regla-precision.jpg';
 import HomeContent from '@/components/HomeContent';
 import Image from 'next/image';
+import CalibrationPanel from '@/components/CalibrationPanel';
 
 import HowToUseSection from '@/components/HowToUseSection';
 import WhyPerfectSection from '@/components/WhyPerfectSection';
@@ -25,63 +24,32 @@ import RulerSizesTable from '@/components/RulerSizesTable';
 
 const HomePageClient = () => {
   const { t } = useLanguage();
-  const { orientation } = useCalibration();
-  const [contentTopMargin, setContentTopMargin] = useState("320px");
-  const isMobile = useIsMobile();
   
   const featuredArticles = blogArticles.filter(article => article.url !== "/").slice(0, 3);
-  
-  useEffect(() => {
-    if (isMobile) return;
-    
-    if (orientation === 'vertical') {
-      setContentTopMargin("640px");
-    } else {
-      setContentTopMargin("320px");
-    }
-  }, [orientation, isMobile]);
   
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
       
-      {!isMobile && (
-        <div className="container text-center mt-8 mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#9b87f5] animate-fade-in">
-            <strong>Online Ruler — Real Size</strong>
-          </h1>
-          <p className="text-lg text-gray-600 mt-2 animate-slide-in">
-            Digital ruler and online tape measure with precise calibration to measure real objects on your screen
-          </p>
-        </div>
-      )}
+      <div className="container mb-6 mt-8 text-center">
+        <h1 className="text-3xl font-bold text-[#9b87f5] md:text-4xl">
+          Online Ruler — Real Size After Calibration
+        </h1>
+        <p className="mt-2 text-base text-gray-600 md:text-lg">
+          Digital ruler for screen measurements after you calibrate it with a physical reference
+        </p>
+      </div>
 
-      {isMobile ? (
+      <CalibrationPanel />
+
+      <div className="md:hidden">
         <MobileRuler />
-      ) : (
-        <div className="w-full overflow-hidden mt-4">
+      </div>
+      <div className="mt-4 hidden w-full md:block">
           <Ruler className="mb-4" />
-        </div>
-      )}
+      </div>
       
-      <main 
-        className={`container flex-1 relative pb-6 ${isMobile ? 'mt-4' : ''}`}
-        style={!isMobile ? { marginTop: contentTopMargin } : {}}
-      >
-            {isMobile && (
-              <>
-                <div className="mb-4 text-center">
-                  <h1 className="text-2xl font-bold text-[#9b87f5] mb-2">
-                    Online Ruler — Real Size
-                  </h1>
-                  <p className="text-sm text-gray-600">
-                    Digital ruler with precise calibration to measure real objects
-                  </p>
-                </div>
-              </>
-            )}
-              
-              
+      <main className="container relative mt-6 flex-1 pb-6">
               <div className="mb-6 md:mb-10">
                 <Card className="bg-white p-4 md:p-6">
                   <CardContent className="p-0">
@@ -122,8 +90,6 @@ const HomePageClient = () => {
                       className="w-full h-auto rounded-lg object-cover"
                       loading="eager"
                       priority
-                      width={1200}
-                      height={630}
                     />
                   </CardContent>
                 </Card>
@@ -182,6 +148,47 @@ const HomePageClient = () => {
                   <HowToUseSection />
                   <WhyPerfectSection />
                 </div>
+
+                <section
+                  className="-mx-6 mb-10 sm:mx-0"
+                  aria-label="Online ruler measurement guide"
+                >
+                  <Card className="overflow-hidden bg-white p-2 sm:p-4 md:p-6">
+                    <CardContent className="p-0">
+                      <figure className="mx-auto w-full max-w-6xl">
+                        <a
+                          href="/images/infographic/online-ruler-1536.webp"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9b87f5] focus-visible:ring-offset-2"
+                          aria-label="Open the online ruler infographic at full size"
+                        >
+                          <picture>
+                            <source
+                              type="image/avif"
+                              srcSet="/images/infographic/online-ruler-640.avif 640w, /images/infographic/online-ruler-960.avif 960w, /images/infographic/online-ruler-1152.avif 1152w, /images/infographic/online-ruler-1536.avif 1536w"
+                              sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1279px) calc(100vw - 6rem), 1152px"
+                            />
+                            <img
+                              src="/images/infographic/online-ruler-1152.webp"
+                              srcSet="/images/infographic/online-ruler-640.webp 640w, /images/infographic/online-ruler-960.webp 960w, /images/infographic/online-ruler-1152.webp 1152w, /images/infographic/online-ruler-1536.webp 1536w"
+                              sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1279px) calc(100vw - 6rem), 1152px"
+                              width="1536"
+                              height="2752"
+                              alt="Online ruler infographic explaining units, screen calibration, measurement steps, common use cases, and accuracy checks"
+                              className="h-auto w-full rounded-lg object-contain shadow-sm"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </picture>
+                        </a>
+                        <figcaption className="mt-2 text-center text-xs text-gray-500 sm:text-sm">
+                          Tap or click the infographic to view it at full resolution.
+                        </figcaption>
+                      </figure>
+                    </CardContent>
+                  </Card>
+                </section>
               
                 <FaqSection />
               
@@ -192,7 +199,7 @@ const HomePageClient = () => {
                   <CardContent className="p-0">
                     <h2 className="text-2xl font-bold mb-4 text-[#9b87f5]">How to Use the Online Ruler Correctly</h2>
                     <p className="mb-6 text-gray-700">
-                      Learn step by step how to calibrate and use the virtual ruler on your device for the most precise measurements possible.
+                      Follow these steps to reduce screen-scaling errors and understand when a physical measuring tool is still required.
                     </p>
 
                     <div className="space-y-6">
@@ -206,7 +213,7 @@ const HomePageClient = () => {
                       <div>
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">2. Calibrate the screen (recommended method)</h3>
                         <p className="text-gray-700 mb-3">
-                          For the ruler to display real measurements, perform a quick calibration:
+                          Before using the scale for a physical object, complete one of these calibration methods:
                         </p>
                         
                         <div className="bg-gray-50 p-4 rounded-lg mb-4">
@@ -214,7 +221,7 @@ const HomePageClient = () => {
                           <ul className="list-disc list-inside space-y-2 text-gray-700">
                             <li>Place a credit or debit card on the screen.</li>
                             <li>Adjust the calibration control until the on-screen card length matches 85.6 mm (standard size).</li>
-                            <li>Save the calibration.</li>
+                            <li>Confirm the match. The page will then mark the ruler as calibrated.</li>
                           </ul>
                         </div>
 
@@ -239,11 +246,9 @@ const HomePageClient = () => {
                       <div className="my-6">
                         <Image
                           src={reglaOnline}
-                          alt="Precision digital caliper instrument on dark surface for exact measurements"
+                          alt="Digital caliper on a dark surface used as a physical measurement instrument"
                           className="w-full max-w-md mx-auto h-auto rounded-lg shadow-md object-cover"
                           loading="lazy"
-                          width={800}
-                          height={420}
                         />
                       </div>
 
@@ -290,17 +295,15 @@ const HomePageClient = () => {
                   <CardContent className="p-0">
                     <h2 className="text-2xl font-bold mb-4 text-[#9b87f5]">Start Measuring Now!</h2>
                     <p className="text-lg text-gray-700 mb-4">
-                      Your screen can become a precise and free measurement tool. With our online ruler, you can measure objects directly from your phone, tablet, or computer without downloading anything.
+                      After calibration, your screen can help with quick, non-critical measurements without downloading an app. Verify important results with a suitable physical instrument.
                     </p>
 
                     <div className="my-6">
                       <Image
                         src={reglaPrecision}
-                        alt="Person using professional measurement ruler on paper with millimeter precision in design work"
+                          alt="Person using a physical ruler on paper for design work"
                         className="w-full max-w-md mx-auto h-auto rounded-lg shadow-md object-cover"
                         loading="lazy"
-                        width={800}
-                        height={420}
                       />
                     </div>
 
@@ -308,7 +311,7 @@ const HomePageClient = () => {
                       <div className="bg-gray-50 p-4 rounded-lg">
                         <h3 className="text-xl font-semibold mb-2 text-gray-800">⚡ Fast, easy, and free</h3>
                         <p className="text-gray-700">
-                          Just calibrate once, and you can use the virtual ruler whenever you need it. Works perfectly with the most common units: centimeters, millimeters, and inches.
+                          Calibrate for the current display and keep browser zoom at 100%. Recalibrate after changing display, zoom, or operating-system scaling.
                         </p>
                       </div>
 

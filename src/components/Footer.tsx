@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-gray-500">
-              © 2025 Online Ruler. All rights reserved.
+              © 2026 Online Ruler. All rights reserved.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 justify-center md:justify-end">

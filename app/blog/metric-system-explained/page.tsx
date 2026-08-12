@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import BlogLayout from '@/components/BlogLayout';
-export const metadata: Metadata = { title: 'The Metric System Explained: A Complete Guide', description: 'Everything you need to know about the metric system. History, units, prefixes, and how to use metric measurements effectively.', keywords: ['metric system', 'SI units', 'measurement', 'meters', 'metric prefixes'], alternates: { canonical: 'https://online-ruler.onl/blog/metric-system-explained' } };
+import { createPageMetadata } from '@/lib/seo';
+export const metadata: Metadata = createPageMetadata({ title: 'The Metric System Explained', description: 'Learn the history, seven SI base units, common prefixes, and practical uses of the modern metric system.', keywords: ['metric system', 'SI units', 'measurement', 'meters', 'metric prefixes'], path: '/blog/metric-system-explained', type: 'article' });
 export default function MetricSystemExplained() {
   return (
     <BlogLayout currentUrl="/blog/metric-system-explained" publishDate="April 20, 2025" imageUrl="/lovable-uploads/sistema-metrico-ventajas.jpg" imageAlt="Visualizing the advantages of the decimal metric system">

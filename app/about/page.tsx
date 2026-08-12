@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import AboutPageClient from './AboutPageClient';
+import { createPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'About Us',
-  description: 'Learn more about Online-Ruler.Onl, the most precise and easy-to-use online measurement tool.',
-  alternates: { canonical: 'https://online-ruler.onl/about' },
-};
+  description: 'Learn how Online-Ruler.Onl handles screen calibration, measurement limitations, privacy, and editorial review.',
+  path: '/about',
+});
 
 export default function AboutPage() {
   return <AboutPageClient />;

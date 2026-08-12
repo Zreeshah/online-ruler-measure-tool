@@ -1,23 +1,22 @@
 import type { Metadata } from 'next';
 import HomePageClient from './HomePageClient';
+import { createPageMetadata, SITE_URL } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: 'Online Ruler - Real Size Ruler on Your Screen',
-  description: 'Online ruler with precise calibration to measure in cm, mm, and inches on your screen. Perfect for exact measurements. Free online tape measure and phone ruler.',
+  description: 'Free online ruler for cm, mm, and inch measurements. Calibrate the screen scale with a physical card or known display diagonal before use.',
   keywords: ['ruler', 'ruler online', 'online ruler', 'ruler measurements', 'inch ruler', 'cm ruler', 'ruler on phone', 'real size ruler', 'phone ruler', 'online tape measure'],
-  alternates: {
-    canonical: 'https://online-ruler.onl/',
-  },
-};
+  path: '/',
+});
 
 const webApplicationSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Online Ruler",
-  "description": "Online ruler with precise calibration to measure in cm, mm, and inches on your screen. Perfect for exact measurements.",
-  "applicationCategory": "UtilityApplication",
+  "description": "On-screen ruler for cm, mm, and inch measurements after user calibration with a known physical reference or display diagonal.",
+  "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
-  "url": "https://online-ruler.onl",
+  "url": SITE_URL,
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -25,10 +24,10 @@ const webApplicationSchema = {
   },
   "featureList": [
     "Measurement in centimeters and inches",
-    "Adjustable real size",
+    "User-calibrated screen scale",
     "Compatible with all devices",
     "No downloads needed",
-    "Precise calibration"
+    "Credit-card reference and screen-diagonal calibration"
   ]
 };
 
@@ -49,7 +48,7 @@ const faqSchema = {
       "name": "Can I use this real size ruler on my phone?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, our online ruler works perfectly on phones, tablets, and computers."
+        "text": "Yes. The ruler works on modern phones, tablets, and computers, but it must be calibrated separately on each display."
       }
     },
     {

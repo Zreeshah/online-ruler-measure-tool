@@ -1,206 +1,79 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { useCalibration } from '@/contexts/CalibrationContext';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { useDeviceInfo } from '@/hooks/use-device-info';
-import { RefreshCw } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import React from 'react';
 import Link from 'next/link';
-import MenuButton from '@/components/MenuButton';
+import { useCalibration } from '@/contexts/CalibrationContext';
+import { Button } from '@/components/ui/button';
+
+const RULER_HEIGHT = 900;
 
 const MobileRuler: React.FC = () => {
-  const {
-    pixelsPerCm,
-    unit,
-    setUnit,
-    getValueInSelectedUnit,
-    getPixelsFromValue,
-    calibrateByScreen
-  } = useCalibration();
-  const {
-    deviceType,
-    screenSize,
-    redetectScreenSize,
-    setScreenSize
-  } = useDeviceInfo();
-  const {
-    t
-  } = useLanguage();
+  const { unit, setUnit, getValueInSelectedUnit, getPixelsFromValue, isCalibrated } = useCalibration();
 
-  // Dynamic ruler height based on screen size
-  const calculateRulerHeight = () => {
-    const minHeight = 400;
-    const unitsToShow = Math.max(25, Math.ceil(screenSize) + 5);
-    const heightPerUnit = 40;
-    return Math.max(minHeight, unitsToShow * heightPerUnit);
-  };
-  const [rulerHeight, setRulerHeight] = useState(calculateRulerHeight());
-  const rulerRef = useRef<HTMLDivElement>(null);
-  const [inputValue, setInputValue] = useState<string>(screenSize.toString());
+  const minorInterval = unit === 'inch' ? 0.125 : unit === 'mm' ? 1 : 0.1;
+  const majorInterval = unit === 'inch' ? 1 : unit === 'mm' ? 10 : 1;
+  const maxValue = getValueInSelectedUnit(RULER_HEIGHT);
+  const ticks = [];
 
-  useEffect(() => {
-    setRulerHeight(calculateRulerHeight());
-    setInputValue(screenSize.toString());
-  }, [screenSize]);
-  useEffect(() => {
-    calibrateByScreen(screenSize);
-  }, [screenSize, calibrateByScreen]);
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-  const handleInputBlur = () => {
-    const newSize = parseFloat(inputValue);
-    if (!isNaN(newSize) && newSize > 0) {
-      setScreenSize(newSize);
-      calibrateByScreen(newSize);
-    } else {
-      setInputValue(screenSize.toString());
-    }
-  };
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      e.currentTarget.blur();
-    }
-  };
-  const generateTicks = () => {
-    if (!rulerRef.current) return [];
-    const ticks = [];
-    const maxValue = Math.max(25, Math.ceil(screenSize) + 5);
-    const majorTickInterval = 1;
-    const minorTickInterval = 0.2;
-    for (let value = 0; value <= maxValue; value += minorTickInterval) {
-      const roundedValue = Math.round(value * 10) / 10;
-      if (roundedValue === 0) continue;
-      let tickType = 'minor';
-      if (roundedValue % majorTickInterval === 0) {
-        tickType = 'major';
-      }
-      const position = getPixelsFromValue(roundedValue);
-      const showLabel = tickType === 'major';
-      let label = roundedValue.toString();
-      ticks.push({
-        position,
-        type: tickType,
-        showLabel,
-        label,
-        value: roundedValue
-      });
-    }
-    return ticks;
-  };
-  const ticks = generateTicks();
-  return <div className="relative mobile-ruler-container">
-      <div className="px-2 pt-2 text-center flex justify-between items-center">
-        <p className="text-xs text-gray-600 mb-1">(Scroll down to show full ruler)</p>
-        <MenuButton />
-      </div>
-      
-      <div className="mobile-ruler-layout" style={{
-      height: 'auto',
-      maxHeight: '80vh',
-      position: 'relative',
-      overflowX: 'hidden',
-      overflowY: 'auto'
-    }}>
-        <div className="ruler-container ruler-vertical mobile-ruler" ref={rulerRef} style={{
-        width: '80px',
-        height: `${rulerHeight}px`,
-        position: 'relative',
-        overflow: 'visible',
-        margin: '0'
-      }}>
-          <div className="relative h-full w-full rounded-none">
-            <div className="absolute h-full w-8 left-8 bg-transparent border-l border-[#9b87f5]"></div>
-            
-            {ticks.map((tick, index) => <div key={index} className="absolute">
-                <div className="absolute" style={{
-              width: tick.type === 'major' ? '32px' : '16px',
-              height: '2px',
-              top: `${tick.position}px`,
-              left: tick.type === 'major' ? '28px' : '44px',
-              transform: 'translateY(-50%)',
-              backgroundColor: '#9b87f5'
-            }}></div>
-                
-                {tick.showLabel && <div className="absolute font-bold" style={{
-              top: `${tick.position}px`,
-              left: '12px',
-              transform: 'translateY(-50%)',
-              color: '#7E69AB',
-              fontSize: '20px'
-            }}>
-                    {tick.label}
-                  </div>}
-              </div>)}
-            
-            <div className="absolute text-sm bg-[#f1f0fb] px-2 rounded text-[#7E69AB] font-semibold" style={{
-            bottom: '24px',
-            left: '12px',
-            transform: 'rotate(-90deg)',
-            transformOrigin: 'left bottom'
-          }}>
-              {unit.toUpperCase()}
-            </div>
-          </div>
-        </div>
-        
-        <div className="flex-1 px-2 absolute top-0 right-0 w-[calc(100%-80px)]">
-          <div className="bg-white p-3 rounded-lg shadow-sm mb-4 max-w-[200px] mx-auto">
-            <p className="text-xs font-medium mb-2">
-              {deviceType} • {parseFloat(screenSize.toFixed(2))}"
+  for (let value = 0; value <= maxValue; value += minorInterval) {
+    const roundedValue = Math.round(value * 1000) / 1000;
+    if (roundedValue === 0) continue;
+    const isMajor = Math.abs(roundedValue / majorInterval - Math.round(roundedValue / majorInterval)) < 0.001;
+    ticks.push({ value: roundedValue, position: getPixelsFromValue(roundedValue), isMajor });
+  }
+
+  return (
+    <section className="container mb-6" aria-label="Mobile on-screen ruler">
+      <div className="overflow-hidden rounded-xl border bg-white shadow-sm">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b p-3">
+          <div>
+            <p className="font-semibold text-gray-900">Vertical screen ruler</p>
+            <p className={`text-xs ${isCalibrated ? 'text-green-700' : 'font-semibold text-amber-800'}`}>
+              {isCalibrated ? 'Using your calibration' : 'Estimated scale — calibrate above before measuring'}
             </p>
-            
-            <div className="flex items-center gap-2 mb-2">
-              <div className="relative w-16 h-28 border border-gray-300 rounded-lg flex items-center justify-center flex-col">
-                <span className="text-sm text-gray-500">Screen</span>
-                <Input type="number" min="3" max="25" step="0.1" value={inputValue} onChange={handleInputChange} onBlur={handleInputBlur} onKeyDown={handleKeyDown} className="text-center h-8 w-14 text-sm font-bold" />
-                <span className="text-xs">inches</span>
-              </div>
-              
-              <div className="flex-grow flex flex-col">
-                <p className="text-xs text-gray-500 mb-1">Enter your device&apos;s screen size</p>
-                <Button onClick={redetectScreenSize} size="sm" variant="outline" className="w-full text-xs h-7 text-[#9b87f5] border-[#9b87f5] hover:bg-[#F1F0FB]">
-                  <RefreshCw size={10} className="mr-1" />
-                  Re-detect
-                </Button>
-              </div>
-            </div>
+          </div>
+          <div className="flex gap-2" aria-label="Measurement unit">
+            {(['cm', 'mm', 'inch'] as const).map((item) => (
+              <Button
+                key={item}
+                type="button"
+                variant={unit === item ? 'default' : 'outline'}
+                className={`min-h-11 min-w-11 ${unit === item ? 'bg-[#7E69AB] hover:bg-[#6b5796]' : ''}`}
+                onClick={() => setUnit(item)}
+              >
+                {item === 'inch' ? 'IN' : item.toUpperCase()}
+              </Button>
+            ))}
           </div>
         </div>
-      </div>
-      
-      
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t p-3 flex justify-center">
-        <div className="flex items-center space-x-4">
-          <a href="#" className={`text-[#9b87f5] ${unit === 'cm' ? 'font-bold' : ''}`} onClick={e => {
-          e.preventDefault();
-          setUnit('cm');
-        }}>
-            CM
-          </a>
-          <span className="text-gray-300">|</span>
-          <a href="#" className={`text-[#9b87f5] ${unit === 'inch' ? 'font-bold' : ''}`} onClick={e => {
-          e.preventDefault();
-          setUnit('inch');
-        }}>
-            INCH
-          </a>
-          <span className="text-gray-300">|</span>
-          <Link href="/blog/how-to-read-a-ruler" className="text-[#9b87f5] text-sm">
-            Blog
-          </Link>
-          <span className="text-gray-300">|</span>
-          <Link href="/privacy" className="text-[#9b87f5] text-sm">
-            {t('privacy')}
-          </Link>
-          <span className="text-gray-300">|</span>
-          <Link href="/disclaimer" className="text-[#9b87f5] text-sm">
-            {t('disclaimer')}
-          </Link>
+
+        <div className="max-h-[65vh] overflow-y-auto bg-[#F5F7FA]" aria-label={`Scrollable ruler in ${unit}`}>
+          <div className="relative w-full" style={{ height: `${RULER_HEIGHT}px` }}>
+            <div className="absolute bottom-0 left-20 top-0 border-l-2 border-[#9b87f5]" />
+            {ticks.map((tick) => (
+              <div key={tick.value} className="absolute left-0" style={{ top: `${tick.position}px` }}>
+                {tick.isMajor && (
+                  <span className="absolute left-3 -translate-y-1/2 text-base font-bold text-[#6b5796]">
+                    {tick.value}
+                  </span>
+                )}
+                <span
+                  className="absolute left-20 -translate-y-1/2 bg-[#7E69AB]"
+                  style={{ width: tick.isMajor ? '44px' : '24px', height: tick.isMajor ? '2px' : '1px' }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-x-4 gap-y-2 border-t p-3 text-sm">
+          <Link href="/blog/how-to-read-a-ruler" className="text-[#6b5796] hover:underline">How to read the scale</Link>
+          <Link href="/privacy" className="text-[#6b5796] hover:underline">Privacy</Link>
+          <Link href="/disclaimer" className="text-[#6b5796] hover:underline">Limitations</Link>
         </div>
       </div>
-    </div>;
+    </section>
+  );
 };
+
 export default MobileRuler;

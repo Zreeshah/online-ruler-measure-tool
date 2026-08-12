@@ -82,6 +82,13 @@ const MenuButton: React.FC = () => {
               <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Blog</p>
             </div>
             <Link
+              href="/blog"
+              className="text-base font-semibold hover:text-ruler-primary py-2 pl-2"
+              onClick={() => setIsOpen(false)}
+            >
+              All Measurement Guides
+            </Link>
+            <Link
               href="/blog/how-to-read-a-ruler" 
               className="text-base font-medium hover:text-ruler-primary py-2 pl-2"
               onClick={() => setIsOpen(false)}

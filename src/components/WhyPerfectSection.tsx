@@ -35,7 +35,7 @@ const WhyPerfectSection: React.FC = () => {
             </li>
             <li className="flex">
               <Check className="text-green-500 mr-2 shrink-0" size={20} />
-              <span>Real size ruler with calibration for exact measurements</span>
+              <span>Clear calibrated and uncalibrated states, with measurement limitations shown</span>
             </li>
           </ul>
         </CardContent>

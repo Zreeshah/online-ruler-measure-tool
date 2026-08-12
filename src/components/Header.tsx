@@ -45,6 +45,13 @@ const Header: React.FC = () => {
                   <ul className="grid gap-3 p-4 w-[250px]">
                     <li>
                       <NavigationMenuLink asChild>
+                        <Link href="/blog" className="block select-none rounded-md p-3 font-semibold hover:bg-accent hover:text-accent-foreground">
+                          All Measurement Guides
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
                         <Link 
                           href="/blog/how-to-read-a-ruler" 
                           className="block select-none rounded-md p-3 hover:bg-accent hover:text-accent-foreground"
@@ -60,6 +67,16 @@ const Header: React.FC = () => {
                           className="block select-none rounded-md p-3 hover:bg-accent hover:text-accent-foreground"
                         >
                           How to Measure on Your Phone
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link
+                          href="/blog/metric-vs-imperial"
+                          className="block select-none rounded-md p-3 hover:bg-accent hover:text-accent-foreground"
+                        >
+                          Metric vs U.S. Customary
                         </Link>
                       </NavigationMenuLink>
                     </li>

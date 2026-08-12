@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import BlogLayout from '@/components/BlogLayout';
-export const metadata: Metadata = { title: 'Measurement Units Guide: Everything You Need to Know', description: 'Complete guide to measurement units. Learn about length, weight, volume, temperature units and how to convert between them.', keywords: ['measurement units', 'unit conversion', 'length units', 'weight units', 'measurement guide'], alternates: { canonical: 'https://online-ruler.onl/blog/measurement-units-guide' } };
+import { createPageMetadata } from '@/lib/seo';
+export const metadata: Metadata = createPageMetadata({ title: 'Measurement Units Guide', description: 'A practical introduction to common length, mass, volume, and temperature units with corrected SI terminology and primary sources.', keywords: ['measurement units', 'unit conversion', 'length units', 'mass units', 'measurement guide'], path: '/blog/measurement-units-guide', type: 'article' });
 export default function MeasurementUnitsGuide() {
   return (
     <BlogLayout currentUrl="/blog/measurement-units-guide" publishDate="April 25, 2025" imageUrl="/lovable-uploads/3aaf4fe4-39fa-4068-9fb3-a5d1decbbc8e.jpg" imageAlt="Decimal metric system units and conversion chart">
@@ -19,24 +20,29 @@ export default function MeasurementUnitsGuide() {
       </ul>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Weight/Mass Units</h2>
       <ul className="list-disc pl-6 mb-6">
-        <li><strong>Gram (g)</strong>: Base metric unit for small weights.</li>
-        <li><strong>Kilogram (kg)</strong>: 1,000 grams. Standard SI unit of mass.</li>
+        <li><strong>Gram (g)</strong>: 1/1000 of a kilogram; commonly used for small masses.</li>
+        <li><strong>Kilogram (kg)</strong>: The SI base unit of mass; 1 kilogram = 1,000 grams.</li>
         <li><strong>Ounce (oz)</strong>: 28.35 grams.</li>
         <li><strong>Pound (lb)</strong>: 16 ounces or 453.6 grams.</li>
       </ul>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Volume Units</h2>
       <ul className="list-disc pl-6 mb-6">
         <li><strong>Milliliter (mL)</strong>: 1/1000 of a liter.</li>
-        <li><strong>Liter (L)</strong>: Base metric unit for volume.</li>
+        <li><strong>Liter (L)</strong>: A non-SI unit accepted for use with SI; 1 L = 1 cubic decimetre.</li>
         <li><strong>Gallon</strong>: 3.785 liters (US) or 4.546 liters (UK).</li>
       </ul>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Temperature Units</h2>
       <ul className="list-disc pl-6 mb-6">
-        <li><strong>Celsius (°C)</strong>: Water freezes at 0°C, boils at 100°C.</li>
-        <li><strong>Fahrenheit (°F)</strong>: Water freezes at 32°F, boils at 212°F.</li>
+        <li><strong>Celsius (°C)</strong>: At standard atmospheric pressure, pure water freezes near 0°C and boils near 100°C.</li>
+        <li><strong>Fahrenheit (°F)</strong>: At standard atmospheric pressure, pure water freezes near 32°F and boils near 212°F.</li>
         <li><strong>Kelvin (K)</strong>: Absolute temperature scale. 0K = -273.15°C.</li>
       </ul>
-      <p>Use our online ruler for quick and precise length measurements in both metric and imperial units!</p>
+      <p>Use the online ruler for quick, calibrated length checks in metric units or inches, and verify important results with a physical instrument.</p>
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Primary Sources</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes" rel="noopener noreferrer">NIST Guide to SI units and prefixes</a></li>
+        <li><a href="https://www.bipm.org/en/publications/si-brochure" rel="noopener noreferrer">BIPM SI Brochure</a></li>
+      </ul>
     </BlogLayout>
   );
 }

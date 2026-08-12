@@ -1,103 +1,135 @@
 "use client";
 
 import React from 'react';
+import { Printer } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
-import { Printer } from 'lucide-react';
-import Image from 'next/image';
-import reglaImage from '@/assets/Regla para Imprimir.png';
+
+const MetricRuler = () => (
+  <div className="print-ruler metric-ruler" aria-label="18 centimetre printable metric ruler">
+    {Array.from({ length: 181 }, (_, millimetre) => {
+      const isCentimetre = millimetre % 10 === 0;
+      const isHalfCentimetre = millimetre % 5 === 0;
+      return (
+        <span
+          key={millimetre}
+          className="print-tick"
+          style={{
+            left: `${millimetre}mm`,
+            height: isCentimetre ? '12mm' : isHalfCentimetre ? '8mm' : '5mm',
+          }}
+        >
+          {isCentimetre && <span className="print-number">{millimetre / 10}</span>}
+        </span>
+      );
+    })}
+  </div>
+);
+
+const InchRuler = () => (
+  <div className="print-ruler inch-ruler" aria-label="7 inch printable ruler">
+    {Array.from({ length: 113 }, (_, sixteenth) => {
+      const isInch = sixteenth % 16 === 0;
+      const isHalf = sixteenth % 8 === 0;
+      const isQuarter = sixteenth % 4 === 0;
+      const isEighth = sixteenth % 2 === 0;
+      return (
+        <span
+          key={sixteenth}
+          className="print-tick"
+          style={{
+            left: `${sixteenth / 16}in`,
+            height: isInch ? '12mm' : isHalf ? '10mm' : isQuarter ? '8mm' : isEighth ? '6mm' : '4mm',
+          }}
+        >
+          {isInch && <span className="print-number">{sixteenth / 16}</span>}
+        </span>
+      );
+    })}
+  </div>
+);
+
+const PrintableSheet = () => (
+  <div className="print-sheet" aria-label="Printable ruler calibration sheet">
+    <h2>Printable measurement rulers</h2>
+    <p className="print-note">Print at 100% or Actual Size. Do not use Fit to Page.</p>
+
+    <h3>Metric ruler — millimetres and centimetres</h3>
+    <MetricRuler />
+
+    <h3>Inch ruler — sixteenths of an inch</h3>
+    <InchRuler />
+
+    <div className="test-block">
+      <h3>Required scale check</h3>
+      <p>Measure this line with a trusted physical ruler. It must measure 100 mm before you use the printed scales.</p>
+      <div className="test-line"><span>100 mm test line</span></div>
+    </div>
+  </div>
+);
 
 const PrintRulerClient: React.FC = () => {
-  const handlePrint = () => { window.print(); };
+  const handlePrint = () => window.print();
 
   return (
     <>
       <Layout>
-        <div className="container mx-auto px-4 py-8 print:py-0">
+        <main className="container mx-auto px-4 py-8 print:p-0">
           <div className="print:hidden">
-            <div className="max-w-6xl mx-auto mb-8">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">Print Ruler — Free Printable Ruler Online</h1>
-              <p className="text-lg text-gray-700 mb-6">Need a real ruler to measure objects and don&apos;t have one on hand? With our tool, you can easily print a real-size ruler, up to 29.7 cm or 11.7 inches, directly from your browser.</p>
-              <div className="mb-8">
-                <Button onClick={handlePrint} className="bg-ruler-primary hover:bg-ruler-secondary text-white">
-                  <Printer className="mr-2 h-4 w-4" /> Print Ruler
-                </Button>
+            <div className="mx-auto max-w-5xl">
+              <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">Printable Ruler with a 100 mm Scale Check</h1>
+              <p className="mb-5 max-w-3xl text-lg text-gray-700">
+                Print an 18 cm metric ruler and a 7 inch ruler. Printer drivers can resize pages, so the result is usable only after the 100 mm test line is checked with a trusted physical ruler.
+              </p>
+              <div className="mb-7 rounded-lg border border-amber-300 bg-amber-50 p-4 text-amber-950">
+                <h2 className="font-semibold">Before printing</h2>
+                <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm leading-6">
+                  <li>Select A4 paper and portrait orientation.</li>
+                  <li>Choose <strong>100%</strong> or <strong>Actual Size</strong>.</li>
+                  <li>Turn off Fit, Shrink, Scale to page, and borderless enlargement.</li>
+                  <li>After printing, verify that the test line is 100 mm. If it is not, do not use the printed ruler.</li>
+                </ol>
               </div>
-              <div className="flex flex-col lg:flex-row gap-8 mb-8">
-                <div className="lg:w-auto flex-shrink-0 flex justify-center lg:justify-start">
-                  <Image src={reglaImage} alt="Print Ruler" className="h-auto max-h-[500px] sm:max-h-[600px] lg:max-h-[800px] w-auto object-contain" loading="lazy" />
-                </div>
-                <div className="flex-1 space-y-8">
-                  <section className="bg-white p-6 rounded-lg shadow-sm">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">How to Print a Ruler Correctly</h2>
-                    <p className="text-gray-700 mb-4">Follow these steps to make sure your printed ruler is the exact size:</p>
-                    <ol className="list-decimal list-inside space-y-2 text-gray-700">
-                      <li>Click the &quot;Print Ruler&quot; button at the top of the page.</li>
-                      <li>In the print window, select A4 paper size (210 x 297 mm).</li>
-                      <li>Make sure the scale is set to 100% (no adjustment or &quot;fit to real size&quot;).</li>
-                      <li>Print in landscape or portrait orientation, as you prefer.</li>
-                      <li>Once printed, verify with a physical ruler that the measurement is correct.</li>
-                    </ol>
-                    <p className="text-gray-700 mt-4">This way, you&apos;ll have a perfectly calibrated ruler of 29.7 cm or 11.7 inches.</p>
-                  </section>
-                  <section className="bg-white p-6 rounded-lg shadow-sm">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Types of Printable Rulers</h2>
-                    <p className="text-gray-700 mb-3">On our site you&apos;ll find different printable ruler models:</p>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>30 cm ruler to print (centimeters and millimeters)</li>
-                      <li>12 inch ruler to print</li>
-                      <li>Combined metric and inch ruler</li>
-                      <li>Printable ruler in PDF (ideal for saving and reusing)</li>
-                    </ul>
-                    <p className="text-gray-700 mt-4">All rulers are designed with precise measurements and clear lines, perfect for home, school, or work.</p>
-                  </section>
-                  <section className="bg-white p-6 rounded-lg shadow-sm">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Useful Tips</h2>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>Use thick paper or cardstock if you want a more durable ruler.</li>
-                      <li>If your printer slightly changes the scale, you can manually adjust the zoom until it matches a known measurement object.</li>
-                      <li>You can laminate the printed ruler to extend its durability.</li>
-                    </ul>
-                  </section>
-                  <section className="bg-white p-6 rounded-lg shadow-sm">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Advantages of Printing Your Own Ruler</h2>
-                    <ul className="list-disc list-inside space-y-2 text-gray-700">
-                      <li>No need to buy a physical one.</li>
-                      <li>Available anytime and anywhere.</li>
-                      <li>Completely free and precise.</li>
-                      <li>You can customize it in centimeters, inches, or both.</li>
-                    </ul>
-                  </section>
-                  <section className="bg-white p-6 rounded-lg shadow-sm">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Download or Print Your Ruler</h2>
-                    <p className="text-gray-700 mb-4">Click the button below to print your ruler directly or download it as PDF. Perfect for measuring craft projects, sewing, technical drawing, or school use.</p>
-                    <Button onClick={handlePrint} className="bg-ruler-primary hover:bg-ruler-secondary text-white">
-                      <Printer className="mr-2 h-4 w-4" /> Print Ruler Now
-                    </Button>
-                  </section>
-                  <section className="bg-white p-6 rounded-lg shadow-sm">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">One Last Thing</h2>
-                    <p className="text-gray-700">Remember to always verify that the print is at 100% scale to ensure precision. At Online-Ruler.Onl, we want you to always have a reliable, practical, and free printable ruler just a click away.</p>
-                  </section>
-                </div>
+              <Button onClick={handlePrint} className="mb-8 min-h-11 bg-ruler-primary text-white hover:bg-ruler-secondary">
+                <Printer className="mr-2 h-4 w-4" /> Print calibrated sheet
+              </Button>
+
+              <div className="overflow-x-auto rounded-xl border bg-white p-4 shadow-sm">
+                <PrintableSheet />
               </div>
+              <p className="mt-5 text-sm leading-6 text-gray-600">
+                These rulers are generated with CSS physical units (mm and in), not a pixel-sized image. Final printed size still depends on browser, printer-driver, and printer settings. Do not use this sheet for safety-critical, medical, or regulated measurements.
+              </p>
             </div>
           </div>
-          <div className="hidden print:block print:m-0 print:p-0">
-            <Image src={reglaImage} alt="Print Ruler" className="w-auto h-auto max-w-none" style={{ width: 'auto', height: 'auto' }} />
+
+          <div className="hidden print:block">
+            <PrintableSheet />
           </div>
-        </div>
+        </main>
       </Layout>
       <style>{`
+        .print-sheet { width: 190mm; min-width: 190mm; margin: 0 auto; color: #111827; font-family: Arial, sans-serif; }
+        .print-sheet h2 { margin: 0 0 3mm; font-size: 18pt; }
+        .print-sheet h3 { margin: 7mm 0 2mm; font-size: 11pt; }
+        .print-note { margin: 0 0 6mm; font-size: 10pt; font-weight: 700; }
+        .print-ruler { position: relative; height: 24mm; border-bottom: 0.4mm solid #111827; }
+        .metric-ruler { width: 180mm; }
+        .inch-ruler { width: 7in; }
+        .print-tick { position: absolute; bottom: 0; width: 0; border-left: 0.25mm solid #111827; }
+        .print-number { position: absolute; top: -5mm; left: -2mm; width: 4mm; text-align: center; font-size: 8pt; }
+        .test-block { margin-top: 12mm; border: 0.3mm solid #9ca3af; padding: 5mm; }
+        .test-block h3 { margin-top: 0; }
+        .test-block p { margin: 0 0 5mm; font-size: 9pt; }
+        .test-line { position: relative; width: 100mm; height: 9mm; border-right: 0.4mm solid #111827; border-bottom: 0.4mm solid #111827; border-left: 0.4mm solid #111827; }
+        .test-line span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 8pt; }
         @media print {
-          @page { size: A4 portrait; margin: 0; }
-          body, html { margin: 0; padding: 0; width: 210mm; height: 297mm; }
+          @page { size: A4 portrait; margin: 10mm; }
+          html, body { width: 210mm; margin: 0; padding: 0; }
           header, footer, nav { display: none !important; }
           .print\\:hidden { display: none !important; }
           .print\\:block { display: block !important; }
-          .print\\:m-0 { margin: 0 !important; }
-          .print\\:p-0 { padding: 0 !important; }
-          img { max-width: none !important; width: auto !important; height: auto !important; display: block; }
+          .print-sheet { break-inside: avoid; }
         }
       `}</style>
     </>
