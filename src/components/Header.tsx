@@ -1,7 +1,4 @@
-"use client";
-
 import React from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
 import { Ruler } from 'lucide-react';
 import Link from 'next/link';
 import MenuButton from './MenuButton';
@@ -16,12 +13,10 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const Header: React.FC = () => {
-  const { t } = useLanguage();
-  
   return (
     <header className="py-4 mb-6 border-b">
       <div className="container flex justify-between items-center">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex min-h-12 items-center">
           <Ruler size={28} className="text-ruler-primary mr-2" />
           <span className="text-2xl font-bold text-ruler-primary">Online-Ruler<span className="text-gray-800">.Onl</span></span>
         </Link>
@@ -30,17 +25,17 @@ const Header: React.FC = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/" className={`${navigationMenuTriggerStyle()} px-4`}>
+                <Link href="/" className={`${navigationMenuTriggerStyle()} min-h-12 px-4`}>
                   Home
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/print-ruler" className={`${navigationMenuTriggerStyle()} px-4`}>
+                <Link href="/print-ruler" className={`${navigationMenuTriggerStyle()} min-h-12 px-4`}>
                   Print Ruler
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Blog</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="min-h-12">Blog</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 w-[250px]">
                     <li>
@@ -174,7 +169,7 @@ const Header: React.FC = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>More</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="min-h-12">More</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 w-[200px]">
                     <li>
@@ -194,14 +189,14 @@ const Header: React.FC = () => {
                     <li>
                       <NavigationMenuLink asChild>
                         <Link href="/privacy" className="block select-none rounded-md p-3 hover:bg-accent hover:text-accent-foreground">
-                          {t('privacy')}
+                          Privacy Policy
                         </Link>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
                         <Link href="/disclaimer" className="block select-none rounded-md p-3 hover:bg-accent hover:text-accent-foreground">
-                          {t('disclaimer')}
+                          Disclaimer
                         </Link>
                       </NavigationMenuLink>
                     </li>

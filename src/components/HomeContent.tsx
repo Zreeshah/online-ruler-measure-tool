@@ -9,7 +9,7 @@ const HomeContent: React.FC = () => {
         Online-Ruler.Onl displays a screen scale in centimetres, millimetres, or inches. It is useful for quick, non-critical checks when a physical ruler is unavailable. Because browsers do not reliably report physical display dimensions, the initial scale is an estimate rather than a real-size measurement.
       </p>
 
-      <h2>Calibrate before measuring</h2>
+      <h2>Why calibration matters</h2>
       <ol>
         <li>Set browser zoom to 100% and keep operating-system display scaling unchanged.</li>
         <li>Match the 85.60 mm reference line to a standard ID-1 bank card, or enter the display diagonal supplied by its manufacturer.</li>

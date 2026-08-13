@@ -38,7 +38,7 @@ const MobileRuler: React.FC = () => {
                 key={item}
                 type="button"
                 variant={unit === item ? 'default' : 'outline'}
-                className={`min-h-11 min-w-11 ${unit === item ? 'bg-[#7E69AB] hover:bg-[#6b5796]' : ''}`}
+                className={`min-h-12 min-w-12 ${unit === item ? 'bg-[#7E69AB] hover:bg-[#6b5796]' : ''}`}
                 onClick={() => setUnit(item)}
               >
                 {item === 'inch' ? 'IN' : item.toUpperCase()}

@@ -2,10 +2,13 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { createPageMetadata } from '@/lib/seo';
+import PageStructuredData from '@/components/PageStructuredData';
+
+const pageDescription = 'Measurement limitations and general-use disclaimer for the Online-Ruler.Onl screen ruler and educational content.';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Disclaimer',
-  description: 'Measurement limitations and general-use disclaimer for the Online-Ruler.Onl screen ruler and educational content.',
+  description: pageDescription,
   path: '/disclaimer',
 });
 
@@ -13,6 +16,7 @@ export default function DisclaimerPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Header />
+      <PageStructuredData name="Disclaimer" description={pageDescription} path="/disclaimer" />
       <main className="container flex-1 py-8">
         <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold mb-6 text-ruler-primary">Disclaimer</h1>

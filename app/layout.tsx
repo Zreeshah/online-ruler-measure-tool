@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Online Ruler - Real Size Ruler on Your Screen',
+    default: 'Calibrated Online Ruler for Screen Measurements',
     template: '%s | Online-Ruler.Onl',
   },
   description: 'Free on-screen ruler for measurements in cm, mm, and inches. Calibrate it with a physical reference or known screen diagonal before measuring.',
@@ -37,7 +37,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/lovable-uploads/34e2e6e3-185b-4643-9ebb-b8ba32de627b.png',
-    apple: '/lovable-uploads/34e2e6e3-185b-4643-9ebb-b8ba32de627b.png',
+    apple: '/online-ruler-logo.png',
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
   },
   manifest: undefined,
   other: {
@@ -82,7 +87,19 @@ export default function RootLayout({
                   '@id': `${SITE_URL}/#organization`,
                   name: SITE_NAME,
                   url: SITE_URL,
-                  logo: `${SITE_URL}/lovable-uploads/34e2e6e3-185b-4643-9ebb-b8ba32de627b.png`,
+                  description: 'Publisher of a browser-based calibrated screen ruler and practical measurement guides.',
+                  logo: {
+                    '@type': 'ImageObject',
+                    url: `${SITE_URL}/online-ruler-logo.png`,
+                    width: 512,
+                    height: 512,
+                  },
+                  contactPoint: {
+                    '@type': 'ContactPoint',
+                    contactType: 'customer support',
+                    email: 'info@online-ruler.onl',
+                    availableLanguage: 'English',
+                  },
                 },
                 {
                   '@type': 'WebSite',
@@ -98,9 +115,9 @@ export default function RootLayout({
         />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-5DP0V66SGR"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

@@ -1,11 +1,8 @@
-"use client";
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Ruler from '@/components/Ruler';
 import MobileRuler from '@/components/MobileRuler';
-import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Ruler as RulerIcon, Maximize, Square, Pencil, Book, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -23,8 +20,6 @@ import FaqSection from '@/components/FaqSection';
 import RulerSizesTable from '@/components/RulerSizesTable';
 
 const HomePageClient = () => {
-  const { t } = useLanguage();
-  
   const featuredArticles = blogArticles.filter(article => article.url !== "/").slice(0, 3);
   
   return (
@@ -84,13 +79,21 @@ const HomePageClient = () => {
               <div className="mb-6 md:mb-10">
                 <Card className="bg-white p-4 md:p-6">
                   <CardContent className="p-0">
-                    <Image 
-                      src={calibrationGuide} 
-                      alt="Calibration guide: Adjusts to the width of a standard plastic card" 
-                      className="w-full h-auto rounded-lg object-cover"
-                      loading="eager"
-                      priority
-                    />
+                    <picture>
+                      <source
+                        type="image/avif"
+                        srcSet="/images/home/calibration-guide-640.avif 640w, /images/home/calibration-guide-986.avif 986w"
+                        sizes="(max-width: 1024px) calc(100vw - 3rem), 986px"
+                      />
+                      <img
+                        src={calibrationGuide.src}
+                        width={calibrationGuide.width}
+                        height={calibrationGuide.height}
+                        alt="Calibration guide showing how to match the on-screen reference to a standard plastic card"
+                        className="h-auto w-full rounded-lg object-cover"
+                        fetchPriority="high"
+                      />
+                    </picture>
                   </CardContent>
                 </Card>
               </div>
@@ -106,37 +109,37 @@ const HomePageClient = () => {
                 <div className="mb-10">
                   <Card className="bg-white p-6">
                     <CardContent className="p-0">
-                      <p className="mb-4">{t('rulerDescription')}</p>
-                      <p className="mb-4">{t('contentIntro')}</p>
+                      <p className="mb-4">Use the on-screen scale for quick measurements in centimeters, millimeters, and inches after calibrating it for the current display.</p>
+                      <p className="mb-4">The initial scale is an estimate because browsers cannot reliably detect physical display size. Match a known reference before relying on it.</p>
                       
-                      <h2 className="text-xl font-bold mb-3 text-[#9b87f5]">{t('moreInfo')}</h2>
+                      <h2 className="text-xl font-bold mb-3 text-[#9b87f5]">More information about virtual rulers</h2>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div className="bg-gray-50 p-4 rounded-lg flex items-start">
                           <RulerIcon className="text-[#9b87f5] mr-2 mt-1" size={20} />
                           <div>
-                            <h3 className="font-semibold mb-1">{t('useCase1')}</h3>
-                            <p className="text-sm text-gray-600">{t('useCase1Description')}</p>
+                            <h3 className="font-semibold mb-1">Graphic and web design</h3>
+                            <p className="text-sm text-gray-600">Check approximate dimensions of visual elements after calibrating the display.</p>
                           </div>
                         </div>
                         <div className="bg-gray-50 p-4 rounded-lg flex items-start">
                           <Pencil className="text-[#9b87f5] mr-2 mt-1" size={20} />
                           <div>
-                            <h3 className="font-semibold mb-1">{t('useCase2')}</h3>
-                            <p className="text-sm text-gray-600">{t('useCase2Description')}</p>
+                            <h3 className="font-semibold mb-1">Craft measurements</h3>
+                            <p className="text-sm text-gray-600">Make quick, non-critical craft checks when a physical ruler is unavailable.</p>
                           </div>
                         </div>
                         <div className="bg-gray-50 p-4 rounded-lg flex items-start">
                           <Square className="text-[#9b87f5] mr-2 mt-1" size={20} />
                           <div>
-                            <h3 className="font-semibold mb-1">{t('useCase3')}</h3>
-                            <p className="text-sm text-gray-600">{t('useCase3Description')}</p>
+                            <h3 className="font-semibold mb-1">Educational use</h3>
+                            <p className="text-sm text-gray-600">Demonstrate metric and inch markings interactively in class.</p>
                           </div>
                         </div>
                         <div className="bg-gray-50 p-4 rounded-lg flex items-start">
                           <Maximize className="text-[#9b87f5] mr-2 mt-1" size={20} />
                           <div>
-                            <h3 className="font-semibold mb-1">{t('useCase4')}</h3>
-                            <p className="text-sm text-gray-600">{t('useCase4Description')}</p>
+                            <h3 className="font-semibold mb-1">Quick checks without a physical tool</h3>
+                            <p className="text-sm text-gray-600">Take a quick screen-based measurement, then verify important results with a physical tool.</p>
                           </div>
                         </div>
                       </div>
@@ -164,11 +167,6 @@ const HomePageClient = () => {
                           aria-label="Open the online ruler infographic at full size"
                         >
                           <picture>
-                            <source
-                              type="image/avif"
-                              srcSet="/images/infographic/online-ruler-640.avif 640w, /images/infographic/online-ruler-960.avif 960w, /images/infographic/online-ruler-1152.avif 1152w, /images/infographic/online-ruler-1536.avif 1536w"
-                              sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1279px) calc(100vw - 6rem), 1152px"
-                            />
                             <img
                               src="/images/infographic/online-ruler-1152.webp"
                               srcSet="/images/infographic/online-ruler-640.webp 640w, /images/infographic/online-ruler-960.webp 960w, /images/infographic/online-ruler-1152.webp 1152w, /images/infographic/online-ruler-1536.webp 1536w"
@@ -318,16 +316,16 @@ const HomePageClient = () => {
                       <div className="bg-gray-50 p-4 rounded-lg">
                         <h3 className="text-xl font-semibold mb-2 text-gray-800">✓ Ready to start</h3>
                         <ul className="list-disc list-inside space-y-2 text-gray-700">
-                          <li>Click the &quot;Calibrate Screen&quot; button.</li>
-                          <li>Adjust the ruler according to your screen size or with a standard card.</li>
-                          <li>Start measuring right away any object you have on hand!</li>
+                          <li>Match the reference to a standard card and select &quot;Confirm card match,&quot; or enter the display diagonal and select &quot;Use diagonal.&quot;</li>
+                          <li>Keep browser zoom at 100% and align the object with the zero mark.</li>
+                          <li>Verify important readings with a suitable physical instrument.</li>
                         </ul>
                       </div>
 
                       <div className="bg-gray-50 p-4 rounded-lg">
                         <h3 className="text-xl font-semibold mb-2 text-gray-800">🎯 Why wait?</h3>
                         <p className="text-gray-700">
-                          Measure, compare, and calculate instantly from any device. Ideal for students, designers, craftspeople, and anyone who needs a quick and reliable measurement.
+                          Use the calibrated scale for quick, non-critical checks on a modern phone, tablet, or computer. Results remain dependent on the current display and setup.
                         </p>
                       </div>
                     </div>

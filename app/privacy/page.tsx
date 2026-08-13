@@ -2,10 +2,13 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { createPageMetadata } from '@/lib/seo';
+import PageStructuredData from '@/components/PageStructuredData';
+
+const pageDescription = 'How Online-Ruler.Onl uses Google Analytics, Google AdSense, cookies, calibration settings, and direct email contact.';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Privacy Policy',
-  description: 'How Online-Ruler.Onl uses Google Analytics, Google AdSense, cookies, calibration settings, and direct email contact.',
+  description: pageDescription,
   path: '/privacy',
 });
 
@@ -13,6 +16,7 @@ export default function PrivacyPage() {
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
       <Header />
+      <PageStructuredData name="Privacy Policy" description={pageDescription} path="/privacy" />
       <main className="container flex-1 py-8">
         <article className="prose mx-auto max-w-3xl rounded-lg bg-white p-6 shadow-md sm:p-8">
           <h1>Privacy Policy</h1>

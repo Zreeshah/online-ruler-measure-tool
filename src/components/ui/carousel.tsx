@@ -109,6 +109,8 @@ const Carousel = React.forwardRef<
         return
       }
 
+      // Initialize the controls once the external carousel API is available.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       onSelect(api)
       api.on("reInit", onSelect)
       api.on("select", onSelect)

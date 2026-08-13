@@ -54,7 +54,7 @@ const CalibrationPanel: React.FC = () => {
         </div>
 
         <div className="grid gap-5 lg:grid-cols-2">
-          <div className="rounded-lg bg-gray-50 p-4">
+          <div className="min-w-0 rounded-lg bg-gray-50 p-4">
             <h3 className="font-semibold text-gray-900">Method A: match a standard card</h3>
             <p className="mt-1 text-sm text-gray-600">Place a standard ID-1 bank card over the line. Adjust until both ends match the card&apos;s 85.60 mm width.</p>
             <div className="my-4 max-w-full overflow-x-auto pb-1">
@@ -67,19 +67,19 @@ const CalibrationPanel: React.FC = () => {
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Button type="button" variant="outline" className="min-h-11" onClick={() => adjustCalibration('down')}>
+              <Button type="button" variant="outline" className="min-h-12" onClick={() => adjustCalibration('down')}>
                 <Minus size={16} className="mr-2" /> Shorter
               </Button>
-              <Button type="button" variant="outline" className="min-h-11" onClick={() => adjustCalibration('up')}>
+              <Button type="button" variant="outline" className="min-h-12" onClick={() => adjustCalibration('up')}>
                 <Plus size={16} className="mr-2" /> Longer
               </Button>
-              <Button type="button" className="min-h-11 bg-[#7E69AB] hover:bg-[#6b5796]" onClick={confirmCardCalibration}>
+              <Button type="button" className="min-h-12 bg-[#7E69AB] hover:bg-[#6b5796]" onClick={confirmCardCalibration}>
                 Confirm card match
               </Button>
             </div>
           </div>
 
-          <div className="rounded-lg bg-gray-50 p-4">
+          <div className="min-w-0 rounded-lg bg-gray-50 p-4">
             <h3 className="font-semibold text-gray-900">Method B: enter the display diagonal</h3>
             <p className="mt-1 text-sm text-gray-600">Use the physical diagonal listed by the display manufacturer, not an automatic browser estimate.</p>
             <form onSubmit={handleScreenCalibration} className="mt-4 flex flex-col gap-2 sm:flex-row">
@@ -95,13 +95,13 @@ const CalibrationPanel: React.FC = () => {
                   value={screenDiagonal}
                   onChange={(event) => setScreenDiagonal(event.target.value)}
                   placeholder='For example, 6.1 or 15.6'
-                  className="min-h-11 bg-white"
+                  className="min-h-12 bg-white"
                 />
               </div>
-              <Button type="submit" className="min-h-11 bg-[#7E69AB] hover:bg-[#6b5796]">Use diagonal</Button>
+              <Button type="submit" className="min-h-12 bg-[#7E69AB] hover:bg-[#6b5796]">Use diagonal</Button>
             </form>
             {screenError && <p className="mt-2 text-sm text-red-700">{screenError}</p>}
-            <Button type="button" variant="ghost" className="mt-3 min-h-11 px-2 text-gray-600" onClick={resetCalibration}>
+            <Button type="button" variant="ghost" className="mt-3 min-h-12 px-2 text-gray-600" onClick={resetCalibration}>
               <RotateCcw size={16} className="mr-2" /> Reset to uncalibrated
             </Button>
           </div>

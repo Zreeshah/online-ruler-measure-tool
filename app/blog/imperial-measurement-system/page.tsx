@@ -3,7 +3,7 @@ import BlogLayout from '@/components/BlogLayout';
 import { createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'British Imperial and U.S. Customary Units',
+  title: 'Imperial vs U.S. Customary Units',
   description: 'Understand how British Imperial and U.S. customary units are related, where they differ, and how common length units convert to SI.',
   keywords: ['British Imperial units', 'US customary units', 'inches', 'feet', 'measurement conversion'],
   path: '/blog/imperial-measurement-system',
@@ -13,7 +13,7 @@ export const metadata: Metadata = createPageMetadata({
 export default function ImperialMeasurementSystem() {
   return (
     <BlogLayout currentUrl="/blog/imperial-measurement-system" publishDate="May 12, 2025" imageUrl="/lovable-uploads/2bfee74f-0a29-4825-ba3c-d22d5a01c53d.jpg" imageAlt="Historical charts of British Imperial measurement units">
-      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">British Imperial and U.S. Customary Units</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Imperial vs U.S. Customary Units</h1>
       <p className="lead">British Imperial and U.S. customary measurement developed from older English units. They share many unit names, but they are distinct systems and should not be treated as interchangeable.</p>
 
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Why the Names Matter</h2>

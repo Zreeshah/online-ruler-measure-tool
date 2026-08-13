@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import BlogLayout from '@/components/BlogLayout';
 import { createPageMetadata } from '@/lib/seo';
-export const metadata: Metadata = createPageMetadata({ title: 'Measurement Units Guide', description: 'A practical introduction to common length, mass, volume, and temperature units with corrected SI terminology and primary sources.', keywords: ['measurement units', 'unit conversion', 'length units', 'mass units', 'measurement guide'], path: '/blog/measurement-units-guide', type: 'article' });
+
+export const metadata: Metadata = createPageMetadata({ title: 'Common Measurement Units: Quick Reference', description: 'A practical introduction to common length, mass, volume, and temperature units with corrected SI terminology and primary sources.', keywords: ['measurement units', 'unit conversion', 'length units', 'mass units', 'measurement guide'], path: '/blog/measurement-units-guide', type: 'article' });
 export default function MeasurementUnitsGuide() {
   return (
     <BlogLayout currentUrl="/blog/measurement-units-guide" publishDate="April 25, 2025" imageUrl="/lovable-uploads/3aaf4fe4-39fa-4068-9fb3-a5d1decbbc8e.jpg" imageAlt="Decimal metric system units and conversion chart">
-      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Measurement Units Guide: Everything You Need to Know</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Common Measurement Units: Quick Reference</h1>
       <p className="lead">Understanding measurement units is essential for science, cooking, construction, and daily life. This guide covers all the major units you need to know.</p>
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Length Units</h2>
       <ul className="list-disc pl-6 mb-6">

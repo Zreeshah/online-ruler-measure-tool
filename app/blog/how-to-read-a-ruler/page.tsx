@@ -3,7 +3,7 @@ import BlogLayout from '@/components/BlogLayout';
 import { createPageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'How to Read a Ruler: Complete Guide',
+  title: 'How to Read a Ruler: Markings and Examples',
   description: 'Learn how to read a ruler accurately with our step-by-step guide. Understand centimeter, millimeter, and inch markings for precise measurements.',
   keywords: ['how to read a ruler', 'ruler markings', 'measurement guide', 'ruler lines', 'reading measurements'],
   path: '/blog/how-to-read-a-ruler',
@@ -13,7 +13,7 @@ export const metadata: Metadata = createPageMetadata({
 export default function HowToReadARuler() {
   return (
     <BlogLayout currentUrl="/blog/how-to-read-a-ruler" publishDate="April 13, 2025" imageUrl="/lovable-uploads/regla-midiendo.jpg" imageAlt="Ruler measuring an object precisely">
-      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">How to Read a Ruler: Complete Guide</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">How to Read a Ruler: Markings and Examples</h1>
       <p className="lead">Reading a ruler may seem simple, but understanding all the markings and measurements requires some practice. This comprehensive guide will teach you how to read both metric and imperial rulers with confidence.</p>
       
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Understanding Ruler Markings</h2>

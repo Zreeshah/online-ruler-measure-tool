@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
-import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Sheet,
   SheetContent,
@@ -15,12 +14,11 @@ import { Button } from '@/components/ui/button';
 
 const MenuButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useLanguage();
   
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="text-ruler-primary hover:bg-gray-100">
+        <Button variant="ghost" size="icon" className="h-12 w-12 text-ruler-primary hover:bg-gray-100">
           <Menu size={24} />
           <span className="sr-only">Menu</span>
         </Button>
@@ -30,17 +28,17 @@ const MenuButton: React.FC = () => {
           <SheetTitle className="text-ruler-primary">Menu</SheetTitle>
         </SheetHeader>
         <div className="py-6 overflow-y-auto max-h-[calc(100vh-8rem)]">
-          <nav className="flex flex-col space-y-1">
+          <nav className="flex flex-col space-y-1 [&_a]:flex [&_a]:min-h-12 [&_a]:items-center">
             <Link
               href="/"
-              className="text-lg font-medium hover:text-ruler-primary py-2"
+              className="py-3 text-lg font-medium hover:text-ruler-primary"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               href="/print-ruler"
-              className="text-lg font-medium hover:text-ruler-primary py-2"
+              className="py-3 text-lg font-medium hover:text-ruler-primary"
               onClick={() => setIsOpen(false)}
             >
               Print Ruler
@@ -51,31 +49,31 @@ const MenuButton: React.FC = () => {
             </div>
             <Link 
               href="/about" 
-              className="text-base font-medium hover:text-ruler-primary py-2 pl-2"
+              className="py-3 pl-2 text-base font-medium hover:text-ruler-primary"
               onClick={() => setIsOpen(false)}
             >
               About Us
             </Link>
             <Link 
               href="/contact" 
-              className="text-base font-medium hover:text-ruler-primary py-2 pl-2"
+              className="py-3 pl-2 text-base font-medium hover:text-ruler-primary"
               onClick={() => setIsOpen(false)}
             >
               Contact
             </Link>
             <Link 
               href="/privacy" 
-              className="text-base font-medium hover:text-ruler-primary py-2 pl-2"
+              className="py-3 pl-2 text-base font-medium hover:text-ruler-primary"
               onClick={() => setIsOpen(false)}
             >
-              {t('privacy')}
+              Privacy Policy
             </Link>
             <Link 
               href="/disclaimer" 
-              className="text-base font-medium hover:text-ruler-primary py-2 pl-2"
+              className="py-3 pl-2 text-base font-medium hover:text-ruler-primary"
               onClick={() => setIsOpen(false)}
             >
-              {t('disclaimer')}
+              Disclaimer
             </Link>
             
             <div className="pt-4 pb-2">
@@ -83,7 +81,7 @@ const MenuButton: React.FC = () => {
             </div>
             <Link
               href="/blog"
-              className="text-base font-semibold hover:text-ruler-primary py-2 pl-2"
+              className="py-3 pl-2 text-base font-semibold hover:text-ruler-primary"
               onClick={() => setIsOpen(false)}
             >
               All Measurement Guides

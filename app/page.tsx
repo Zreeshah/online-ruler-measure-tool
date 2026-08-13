@@ -3,7 +3,7 @@ import HomePageClient from './HomePageClient';
 import { createPageMetadata, SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Online Ruler - Real Size Ruler on Your Screen',
+  title: 'Calibrated Online Ruler for Screen Measurements',
   description: 'Free online ruler for cm, mm, and inch measurements. Calibrate the screen scale with a physical card or known display diagonal before use.',
   keywords: ['ruler', 'ruler online', 'online ruler', 'ruler measurements', 'inch ruler', 'cm ruler', 'ruler on phone', 'real size ruler', 'phone ruler', 'online tape measure'],
   path: '/',
@@ -12,20 +12,25 @@ export const metadata: Metadata = createPageMetadata({
 const webApplicationSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
+  "@id": `${SITE_URL}/#webapp`,
   "name": "Online Ruler",
   "description": "On-screen ruler for cm, mm, and inch measurements after user calibration with a known physical reference or display diagonal.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript and a modern web browser",
+  "isAccessibleForFree": true,
   "url": SITE_URL,
+  "mainEntityOfPage": SITE_URL,
+  "publisher": { "@id": `${SITE_URL}/#organization` },
   "offers": {
     "@type": "Offer",
-    "price": "0",
+    "price": 0,
     "priceCurrency": "USD"
   },
   "featureList": [
     "Measurement in centimeters and inches",
     "User-calibrated screen scale",
-    "Compatible with all devices",
+    "Designed for modern phones, tablets, and computers",
     "No downloads needed",
     "Credit-card reference and screen-diagonal calibration"
   ]
@@ -40,7 +45,7 @@ const faqSchema = {
       "name": "How do I calibrate the online ruler?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can calibrate the digital ruler by entering your screen size, using a credit card as a reference, or manually adjusting until it matches a known-size object."
+        "text": "Match the on-screen reference to a standard 85.60 mm ID-1 card, or enter the manufacturer-listed display diagonal. Keep browser zoom at 100%."
       }
     },
     {
@@ -56,7 +61,7 @@ const faqSchema = {
       "name": "How accurate is the online ruler?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Our virtual ruler can be very accurate when properly calibrated, but final precision depends on your screen resolution and correct calibration."
+        "text": "Accuracy varies with calibration, browser zoom, operating-system scaling, display geometry, and object placement. Verify the scale against a trusted physical reference and use certified tools for critical work."
       }
     }
   ]

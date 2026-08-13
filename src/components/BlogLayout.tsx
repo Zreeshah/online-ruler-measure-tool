@@ -1,13 +1,12 @@
-"use client";
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { Clock, Share2, ArrowLeft } from 'lucide-react';
+import { Clock, ArrowLeft } from 'lucide-react';
 import RelatedArticlesSection from '@/components/RelatedArticlesSection';
 import { blogArticles } from '@/utils/internalLinks';
-import { SITE_NAME, SITE_URL } from '@/lib/seo';
+import { SITE_URL } from '@/lib/seo';
+import ShareButton from '@/components/ShareButton';
 
 interface BlogLayoutProps {
   children: React.ReactNode;
@@ -21,7 +20,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDa
   const slug = currentUrl.split('/').filter(Boolean).at(-1) || '';
   const article = blogArticles.find((item) => item.url === currentUrl);
   const canonicalUrl = `${SITE_URL}${currentUrl}`;
-  const publishedIso = new Date(publishDate).toISOString().slice(0, 10);
+  const publishedIso = article?.publishedDate || new Date(publishDate).toISOString().slice(0, 10);
   const optimizedImage = `${SITE_URL}/images/blog/${slug}-1200.webp`;
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -30,13 +29,28 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDa
         '@type': 'BlogPosting',
         '@id': `${canonicalUrl}/#article`,
         headline: article?.title,
+        description: article?.description,
         datePublished: publishedIso,
-        dateModified: '2026-08-12',
+        ...(article?.modifiedDate && { dateModified: article.modifiedDate }),
         mainEntityOfPage: canonicalUrl,
-        image: optimizedImage,
-        author: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Online Ruler Editorial Team' },
+        image: {
+          '@type': 'ImageObject',
+          url: optimizedImage,
+          contentUrl: optimizedImage,
+          width: 1200,
+          height: 630,
+          caption: imageAlt || article?.title,
+        },
+        thumbnailUrl: `${SITE_URL}/images/blog/${slug}-social.jpg`,
+        author: {
+          '@type': 'Organization',
+          '@id': `${SITE_URL}/#editorial-team`,
+          name: 'Online Ruler Editorial Team',
+          url: `${SITE_URL}/about`,
+        },
         publisher: { '@id': `${SITE_URL}/#organization` },
         isPartOf: { '@id': `${SITE_URL}/#website` },
+        keywords: article?.keywords.join(', '),
         inLanguage: 'en',
       },
       {
@@ -49,14 +63,6 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDa
         ],
       },
     ],
-  };
-
-  const shareArticle = async () => {
-    if (navigator.share) {
-      await navigator.share({ title: article?.title || SITE_NAME, url: canonicalUrl });
-      return;
-    }
-    await navigator.clipboard.writeText(canonicalUrl);
   };
 
   return (
@@ -78,15 +84,15 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDa
           </nav>
           
           <div className="bg-white rounded-xl shadow-sm p-5 sm:p-8 mb-8">
-            <div className="mb-6 flex items-center justify-between">
+            <div className="mb-6 flex items-start justify-between gap-3">
               <div className="flex items-center text-gray-500 text-sm">
                 <Clock size={16} className="mr-1" />
-                <span>Published: <time dateTime={publishedIso}>{publishDate}</time> · Updated: <time dateTime="2026-08-12">August 12, 2026</time></span>
+                <span>
+                  Published: <time dateTime={publishedIso}>{publishDate}</time>
+                  {article?.modifiedDate && <> · Updated: <time dateTime={article.modifiedDate}>August 12, 2026</time></>}
+                </span>
               </div>
-              <button type="button" onClick={shareArticle} className="flex min-h-11 items-center text-gray-500 text-sm hover:text-ruler-primary">
-                <Share2 size={16} className="mr-1" />
-                <span>Share</span>
-              </button>
+              <ShareButton title={article?.title || 'Online Ruler measurement guide'} url={canonicalUrl} />
             </div>
             
             <article className="prose prose-sm sm:prose lg:prose-lg max-w-none">
@@ -107,6 +113,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDa
                       alt={imageAlt || ''}
                       className="h-full w-full object-cover"
                       decoding="async"
+                      fetchPriority="high"
                     />
                   </picture>
                 </div>

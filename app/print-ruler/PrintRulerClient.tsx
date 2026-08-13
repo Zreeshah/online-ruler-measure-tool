@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { Printer } from 'lucide-react';
-import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
+import PageBreadcrumb from '@/components/PageBreadcrumb';
+import Link from 'next/link';
 
 const MetricRuler = () => (
   <div className="print-ruler metric-ruler" aria-label="18 centimetre printable metric ruler">
@@ -73,10 +74,10 @@ const PrintRulerClient: React.FC = () => {
 
   return (
     <>
-      <Layout>
-        <main className="container mx-auto px-4 py-8 print:p-0">
-          <div className="print:hidden">
-            <div className="mx-auto max-w-5xl">
+        <main className="container mx-auto flex-1 px-4 py-8 print:p-0">
+          <div className="mx-auto max-w-5xl">
+            <div className="print:hidden">
+              <PageBreadcrumb current="Printable Ruler" className="mb-4" />
               <h1 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">Printable Ruler with a 100 mm Scale Check</h1>
               <p className="mb-5 max-w-3xl text-lg text-gray-700">
                 Print an 18 cm metric ruler and a 7 inch ruler. Printer drivers can resize pages, so the result is usable only after the 100 mm test line is checked with a trusted physical ruler.
@@ -90,24 +91,19 @@ const PrintRulerClient: React.FC = () => {
                   <li>After printing, verify that the test line is 100 mm. If it is not, do not use the printed ruler.</li>
                 </ol>
               </div>
-              <Button onClick={handlePrint} className="mb-8 min-h-11 bg-ruler-primary text-white hover:bg-ruler-secondary">
+              <Button onClick={handlePrint} className="mb-8 min-h-12 bg-ruler-primary text-white hover:bg-ruler-secondary">
                 <Printer className="mr-2 h-4 w-4" /> Print calibrated sheet
               </Button>
-
-              <div className="overflow-x-auto rounded-xl border bg-white p-4 shadow-sm">
-                <PrintableSheet />
-              </div>
-              <p className="mt-5 text-sm leading-6 text-gray-600">
-                These rulers are generated with CSS physical units (mm and in), not a pixel-sized image. Final printed size still depends on browser, printer-driver, and printer settings. Do not use this sheet for safety-critical, medical, or regulated measurements.
-              </p>
             </div>
-          </div>
 
-          <div className="hidden print:block">
-            <PrintableSheet />
+            <div className="overflow-x-auto rounded-xl border bg-white p-4 shadow-sm print:overflow-visible print:rounded-none print:border-0 print:p-0 print:shadow-none">
+              <PrintableSheet />
+            </div>
+            <p className="mt-5 text-sm leading-6 text-gray-600 print:hidden">
+              These rulers use CSS physical units (mm and in), not a pixel-sized image. Final printed size still depends on browser, printer-driver, and printer settings. Review <Link href="/blog/how-to-read-a-ruler" className="text-ruler-primary hover:underline">how to read ruler markings</Link>, or return to the <Link href="/" className="text-ruler-primary hover:underline">calibrated screen ruler</Link>. Do not use this sheet for safety-critical, medical, or regulated measurements.
+            </p>
           </div>
         </main>
-      </Layout>
       <style>{`
         .print-sheet { width: 190mm; min-width: 190mm; margin: 0 auto; color: #111827; font-family: Arial, sans-serif; }
         .print-sheet h2 { margin: 0 0 3mm; font-size: 18pt; }

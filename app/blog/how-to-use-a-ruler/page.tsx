@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import BlogLayout from '@/components/BlogLayout';
 import { createPageMetadata } from '@/lib/seo';
+
 export const metadata: Metadata = createPageMetadata({ title: 'How to Use a Ruler: Step-by-Step Guide', description: 'Master the art of using a ruler with our step-by-step guide. Learn proper technique for accurate measurements every time.', keywords: ['how to use a ruler', 'ruler guide', 'measuring technique', 'ruler tutorial', 'measurement tips'], path: '/blog/how-to-use-a-ruler', type: 'article' });
 export default function HowToUseARuler() {
   return (

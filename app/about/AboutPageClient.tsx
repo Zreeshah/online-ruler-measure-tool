@@ -1,8 +1,7 @@
-"use client";
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import PageBreadcrumb from '@/components/PageBreadcrumb';
 import { Target, Zap } from 'lucide-react';
 
 const AboutPageClient = () => {
@@ -11,6 +10,7 @@ const AboutPageClient = () => {
       <Header />
       <main className="container flex-1 py-8">
         <div className="max-w-4xl mx-auto">
+          <PageBreadcrumb current="About Us" className="mb-4" />
           <div className="bg-white p-8 rounded-lg shadow-md mb-8">
             <h1 className="text-3xl font-bold mb-6 text-ruler-primary">About Us</h1>
             <p className="text-lg text-gray-700 mb-6">
@@ -77,7 +77,7 @@ const AboutPageClient = () => {
                   <span className="text-ruler-primary font-bold">4</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1 text-gray-900">Compatible with All Devices</h3>
+                  <h3 className="font-semibold mb-1 text-gray-900">Designed for Modern Screens</h3>
                   <p className="text-gray-700">Designed for modern computers, tablets, and smartphones. Results vary with browser zoom, display scaling, and device geometry.</p>
                 </div>
               </div>
