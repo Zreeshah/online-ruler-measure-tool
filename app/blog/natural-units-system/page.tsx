@@ -51,6 +51,41 @@ export default function NaturalUnitsSystem() {
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">When to use them</h2>
       <p>Natural units are useful in relativity, particle physics, cosmology, and statistical mechanics. For laboratory reporting, engineering, and daily measurements, SI units remain clearer because the unit symbols preserve scale and traceability. For ordinary length checks, use the <a href="/blog/metric-system-explained">metric-system guide</a> or a calibrated physical instrument.</p>
 
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Atomic Units: The Chemist's Natural System</h2>
+      <p>Atomic units set the electron mass, the elementary charge, ℏ, and the Coulomb constant to one. In this convention the Bohr radius — about 0.529 Å, or 5.29 × 10⁻¹¹ m — becomes the unit of length, and the Hartree (about 27.2 eV) becomes the unit of energy. Quantum chemistry calculations use atomic units because atomic-scale quantities come out as small, readable numbers instead of powers of ten. As with every natural system, the convention must be stated: an energy of "2.5" means nothing until the reader knows it is 2.5 Hartree.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Geometrized Units in Relativity</h2>
+      <p>General relativity often uses geometrized units, where G = c = 1. Mass then has the dimension of length: the Sun's mass is about 1.477 km, and Earth's is about 4.43 mm. This sounds strange, but it makes the equations of relativity cleaner — mass, length, and time collapse into one dimension. The Schwarzschild radius formula, normally r = 2GM/c², becomes simply r = 2M. The simplification is real, but converting back to kilograms requires dividing by G/c², a step that is easy to forget.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">A Worked Example: E = mc² Becomes E = m</h2>
+      <p>In SI, a 1 kg mass corresponds to an energy of 1 × (299,792,458 m/s)² ≈ 9 × 10¹⁶ J. In c = 1 units, the same statement is E = m: a mass of 1 kg has an energy of 1 kg (in energy units). The factor c² has not vanished from physics; it has been absorbed into the unit definitions. To report the result in joules, multiply the mass in kilograms by c² again. This is the pattern for every natural-unit calculation: simplify inside the calculation, restore the constants at the end.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Converting a Natural-Unit Result Back to SI, Step by Step</h2>
+      <ol className="list-decimal pl-6 mb-6">
+        <li>Write down the convention used (for example, c = ℏ = 1).</li>
+        <li>Identify the dimension of the result in SI (length, energy, time).</li>
+        <li>Insert the suppressed constants by dimensional analysis until the SI dimensions match.</li>
+        <li>Substitute the CODATA values of the constants.</li>
+        <li>Check the order of magnitude against a known SI value before publishing.</li>
+      </ol>
+      <p>Skipping step 1 is the most common error in the literature. A result quoted as "3.2" with no convention stated cannot be reproduced, which is why journals in theoretical physics expect the convention in the methods or the first equations. For the SI system that results are converted back into, see <a href="/blog/metric-system-explained">Metric System Basics</a>, and for the coherent unit system underneath SI, see <a href="/blog/mks-system">MKS System Explained</a>.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Frequently Asked Questions</h2>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Are natural units "real" units?</h3>
+      <p>They are conventions, not separate physical quantities. They relabel the same physics by choosing constants as unit definitions. SI remains the system for reporting measured values.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">What is the Planck length, in plain terms?</h3>
+      <p>About 1.616 × 10⁻³⁵ m — the length scale where quantum effects and gravity are both expected to matter. It is far below anything measurable: a proton is about 10²⁰ Planck lengths across.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Can I use natural units in engineering?</h3>
+      <p>No. Engineering needs traceable SI values with stated uncertainties. Natural units are a calculation aid for theory, not a reporting system.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Takeaways</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li>Natural units set chosen constants to one; they simplify equations but do not remove dimensions.</li>
+        <li>Atomic units (chemistry) and geometrized units (relativity) are different conventions — never mix them silently.</li>
+        <li>Always state the convention and restore the constants when converting back to SI.</li>
+        <li>For laboratory and engineering reporting, SI is the system to use.</li>
+      </ul>
+
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Primary Sources</h2>
       <ul className="list-disc pl-6 mb-6">
         <li><a href="https://www.nist.gov/programs-projects/fundamental-constants-nature" rel="noopener noreferrer">NIST: Fundamental Constants in Nature</a></li>

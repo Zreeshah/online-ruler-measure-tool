@@ -75,6 +75,13 @@ const MenuButton: React.FC = () => {
             >
               Disclaimer
             </Link>
+            <Link 
+              href="/terms" 
+              className="py-3 pl-2 text-base font-medium hover:text-ruler-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              Terms of Use
+            </Link>
             
             <div className="pt-4 pb-2">
               <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Blog</p>

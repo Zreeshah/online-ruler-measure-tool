@@ -35,6 +35,11 @@ const Header: React.FC = () => {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
+                <Link href="/contact" className={`${navigationMenuTriggerStyle()} min-h-12 px-4`}>
+                  Contact
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
                 <NavigationMenuTrigger className="min-h-12">Blog</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 w-[250px]">
@@ -197,6 +202,13 @@ const Header: React.FC = () => {
                       <NavigationMenuLink asChild>
                         <Link href="/disclaimer" className="block select-none rounded-md p-3 hover:bg-accent hover:text-accent-foreground">
                           Disclaimer
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/terms" className="block select-none rounded-md p-3 hover:bg-accent hover:text-accent-foreground">
+                          Terms of Use
                         </Link>
                       </NavigationMenuLink>
                     </li>

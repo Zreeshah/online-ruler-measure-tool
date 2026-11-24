@@ -59,6 +59,35 @@ export default function DepthGaugeGuide() {
       <p>Select a range that covers the feature without placing the instrument at its limit. The base must bridge the opening and contact a stable datum. The contact shape must reach the intended bottom. For tight tolerances, use an instrument with a current calibration and an uncertainty appropriate to the decision.</p>
       <p>A screen ruler cannot replace a depth gauge because a display provides a flat two-dimensional scale. Use the <Link href="/">online ruler</Link> only for calibrated, non-critical length checks that can be placed directly against the screen.</p>
 
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Reading a Vernier Depth Gauge, Step by Step</h2>
+      <p>A vernier depth gauge adds a sliding vernier scale to the main rule, letting you read finer than the main divisions. First read the main scale up to the last whole mark before the vernier zero — for example, 12 mm. Then find the single vernier line that aligns exactly with a main-scale line; if it is the 6th vernier line and each vernier division is 0.02 mm, add 0.12 mm. The reading is 12.12 mm. Only one vernier line aligns at a time; if two look close, look again under better light and re-check the zero. Digital gauges skip this skill entirely, which is one reason workshops prefer them for routine work — but a vernier never runs out of battery.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">How a Depth Micrometer Works</h2>
+      <p>A depth micrometer advances a rod by a precision screw, typically 0.5 mm per full turn, with the thimble divided into 50 parts so each part is 0.01 mm. Interchangeable rods cover different ranges (for example 0–25 mm, 25–50 mm, 50–75 mm), and each rod has its own length offset that must be included — forgetting the offset is the classic depth-micrometer error. Seat the base flat on the reference surface, turn the thimble until the rod touches the bottom with a light, consistent feel, then read the sleeve and thimble together. The ratchet stop, where fitted, gives a repeatable measuring force.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Calibration and Gauge Blocks</h2>
+      <p>A depth gauge should be checked against a known reference before critical work. The usual check is a gauge block (slip gauge) of certified length wrung onto a flat surface plate: zero the gauge on the plate, then measure the block and compare. A gauge that reads 25.02 mm on a 25.00 mm block has a +0.02 mm error that must be recorded and either corrected or allowed for. Keep a simple log — date, reference used, reading, error — and send the instrument for calibration when the error approaches the tolerance you work to. Temperature matters too: steel expands about 11.5 µm per metre per degree Celsius, so a 25 mm measurement shifts by roughly 0.3 µm per degree — small, but not nothing at tight tolerances.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Depth Gauge vs. Height Gauge</h2>
+      <p>The two tools look similar but measure from opposite directions. A depth gauge measures down from a reference surface into a recess. A height gauge measures up from a surface plate to a point on the workpiece, usually with a scriber for marking out. Using one as the other invites datum errors: a depth reading taken from the wrong face is not a height, and a height gauge cannot reach the bottom of a narrow hole. Choose by asking which surface is the datum and which direction the measurement runs.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Frequently Asked Questions</h2>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">What is the difference between a depth gauge and a caliper's depth rod?</h3>
+      <p>A caliper's depth rod is convenient for rough checks, but the caliper's narrow jaws give a small, less stable reference surface. A dedicated depth gauge has a broad flat base that seats reliably on the datum, which is what makes its readings repeatable.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">How deep can a depth gauge measure?</h3>
+      <p>Rule and vernier types typically cover 150–300 mm. Depth micrometers cover their rod range, commonly up to 150–300 mm with a set of rods. Beyond that, use a dedicated long-reach gauge or a coordinate measuring machine.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Why do my repeat readings differ?</h3>
+      <p>Usually seating, force, or dirt: the base was not flat, the rod was tilted, the measuring force varied, or debris sat under the base. Clean everything, zero again, and repeat with the same gentle touch.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Takeaways</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li>Zero on a clean flat reference, seat the base flat, keep the rod on the measurement axis.</li>
+        <li>Read a vernier by finding the single aligning line; include the rod offset on a depth micrometer.</li>
+        <li>Check against a gauge block before critical work and log the error.</li>
+        <li>Display resolution is not accuracy — compare the instrument's uncertainty with the tolerance.</li>
+        <li>For angle and slope work rather than depth, see our <a href="/blog/clinometer-guide">Clinometer Guide</a>.</li>
+      </ul>
+
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Primary Sources</h2>
       <ul className="list-disc pl-6 mb-6">
         <li><a href="https://www.starrett.com/docs/default-source/user-guides/depth-gages/5004-user-manual_form-956.pdf?sfvrsn=7c151880_9" rel="noopener noreferrer">Starrett: 5004 Series Depth Gage user manual</a></li>

@@ -4,7 +4,7 @@ import { blogArticles } from '@/utils/internalLinks';
 export const SITE_URL = 'https://www.online-ruler.onl';
 export const SITE_NAME = 'Online-Ruler.Onl';
 export const SOCIAL_IMAGE_URL = `${SITE_URL}/ruler-preview.png`;
-export const LAST_REVIEWED_DATE = '2026-08-13';
+export const LAST_REVIEWED_DATE = '2026-11-24';
 
 type PageMetadataOptions = {
   title: string;
@@ -23,9 +23,7 @@ export function createPageMetadata({
 }: PageMetadataOptions): Metadata {
   const url = new URL(path, `${SITE_URL}/`).toString();
   const article = type === 'article' ? blogArticles.find((item) => item.url === path) : undefined;
-  const socialImageUrl = article
-    ? `${SITE_URL}/images/blog/${path.split('/').filter(Boolean).at(-1)}-social.jpg`
-    : SOCIAL_IMAGE_URL;
+  const socialImageUrl = SOCIAL_IMAGE_URL;
   const displayTitle = path === '/' ? title : `${title} | Online Ruler`;
 
   return {
@@ -48,7 +46,7 @@ export function createPageMetadata({
       },
     },
     openGraph: {
-      title,
+      title: displayTitle,
       description,
       type,
       url,
@@ -70,7 +68,7 @@ export function createPageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: displayTitle,
       description,
       images: [{ url: socialImageUrl, alt: article?.title || 'Online Ruler screen measurement and calibration tool' }],
     },

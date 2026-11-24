@@ -30,7 +30,6 @@ export const blogArticles: ArticleLink[] = [
     title: "Depth Gauge Types and Basic Use",
     description: "Compare common depth-gauge types, learn the basic measuring procedure, and understand practical accuracy limits.",
     publishedDate: "2025-05-15",
-    modifiedDate: "2026-08-13",
     keywords: ["gauge", "depth", "instrument", "measurement", "precision"]
   },
   {
@@ -38,7 +37,6 @@ export const blogArticles: ArticleLink[] = [
     title: "Dimensionless Numbers: Meaning and Examples",
     description: "Understand dimensionless quantities and see how Reynolds, Mach, and other ratios are used in science and engineering.",
     publishedDate: "2025-04-22",
-    modifiedDate: "2026-08-13",
     keywords: ["numbers", "dimensionless", "physics", "engineering", "Reynolds"]
   },
   {
@@ -60,7 +58,6 @@ export const blogArticles: ArticleLink[] = [
     title: "Metric System Basics: Units and Prefixes",
     description: "Explore the history, seven SI base units, decimal prefixes, and practical advantages of the modern metric system.",
     publishedDate: "2025-04-20",
-    modifiedDate: "2026-08-13",
     keywords: ["metric", "system", "units", "measurement", "decimal"]
   },
   {
@@ -82,7 +79,6 @@ export const blogArticles: ArticleLink[] = [
     title: "MKS System: Meter-Kilogram-Second Explained",
     description: "Learn how the metre, kilogram, and second form the mechanical foundation of MKS units and relate to modern SI.",
     publishedDate: "2025-05-01",
-    modifiedDate: "2026-08-13",
     keywords: ["MKS", "system", "meter", "kilogram", "second"]
   },
   {
@@ -90,7 +86,6 @@ export const blogArticles: ArticleLink[] = [
     title: "Natural Units in Physics: Practical Overview",
     description: "Learn why physicists set selected fundamental constants to one and how natural-unit conventions simplify equations.",
     publishedDate: "2025-05-05",
-    modifiedDate: "2026-08-13",
     keywords: ["natural", "units", "physics", "Planck", "constants"]
   },
   {
@@ -98,7 +93,6 @@ export const blogArticles: ArticleLink[] = [
     title: "Clinometer: Measure Slope and Height",
     description: "Learn how clinometers measure slope and inclination, compare instrument types, and review common applications.",
     publishedDate: "2025-05-08",
-    modifiedDate: "2026-08-13",
     keywords: ["clinometer", "angle", "slope", "measurement", "tool"]
   },
   {

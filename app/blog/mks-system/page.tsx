@@ -62,6 +62,46 @@ export default function MKSSystem() {
       </ul>
       <p>For the full set of base units and decimal prefixes, continue with <a href="/blog/metric-system-explained">Metric System Basics</a>.</p>
 
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">A Short History: Giorgi and the 1960 Decision</h2>
+      <p>The MKS system was proposed by Italian physicist Giovanni Giorgi in 1901. He added a fourth unit — the ampere for electric current — to the metre, kilogram, and second, producing a coherent system that covered mechanics and electromagnetism together. Earlier, the centimetre-gram-second (CGS) system had served physics, but its electrical units were awkward for engineering. In 1960, the 11th General Conference on Weights and Measures adopted Giorgi's approach as the International System of Units (SI), adding the kelvin, mole, and candela as base units. MKS is therefore best understood as the mechanical core of SI, not a rival to it.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">MKS vs. CGS: A Comparison</h2>
+      <div className="overflow-x-auto">
+        <table>
+          <thead><tr><th>Quantity</th><th>MKS / SI</th><th>CGS</th><th>Conversion</th></tr></thead>
+          <tbody>
+            <tr><td>Length</td><td>metre (m)</td><td>centimetre (cm)</td><td>1 m = 100 cm</td></tr>
+            <tr><td>Mass</td><td>kilogram (kg)</td><td>gram (g)</td><td>1 kg = 1,000 g</td></tr>
+            <tr><td>Force</td><td>newton (N)</td><td>dyne (dyn)</td><td>1 N = 100,000 dyn</td></tr>
+            <tr><td>Energy</td><td>joule (J)</td><td>erg</td><td>1 J = 10,000,000 erg</td></tr>
+            <tr><td>Pressure</td><td>pascal (Pa)</td><td>barye (Ba)</td><td>1 Pa = 10 Ba</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>CGS still appears in older physics texts and in some astrophysics, so recognizing its units matters when reading them. For everyday work, use MKS/SI. The base units and prefixes behind this table are covered in <a href="/blog/metric-system-explained">Metric System Basics</a>.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Electrical Units in the MKS Tradition</h2>
+      <p>Giorgi's fourth unit, the ampere, makes electrical quantities coherent too: one volt equals one watt per ampere, one ohm equals one volt per ampere, and one coulomb equals one ampere-second. In SI the ampere is now defined by fixing the elementary charge, but the coherence Giorgi wanted remains: electrical equations in SI need no extra numerical factors when coherent units are used. This is the practical payoff of a coherent system — the same reason a newton needs no conversion factor in F = ma.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">More Worked Examples</h2>
+      <p><strong>Energy:</strong> lifting a 2 kg book 1.5 m against gravity takes about 2 × 9.81 × 1.5 ≈ 29.4 J. <strong>Power:</strong> doing that work in 2 s needs about 14.7 W. <strong>Pressure:</strong> a 50 kg person standing on one foot of about 0.02 m² exerts roughly 50 × 9.81 ÷ 0.02 ≈ 24,500 Pa. In each case the MKS units combine without conversion factors — the answer comes out directly in joules, watts, and pascals.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Frequently Asked Questions</h2>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Is MKS the same as SI?</h3>
+      <p>No. MKS is the three-unit mechanical core (metre, kilogram, second). SI adds the ampere, kelvin, mole, and candela, and defines everything through fixed constants. MKS is inside SI, not equal to it.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">What does "coherent" mean for a unit system?</h3>
+      <p>Derived units are formed from base units by multiplication and division only, with no extra numerical factor. One newton is exactly 1 kg·m/s² — the number 1, not 100,000 as in CGS, where the dyne needs a factor of 10⁵.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Do engineers still use CGS?</h3>
+      <p>Rarely for new work. CGS survives in older literature and a few specialist fields. New engineering uses SI, which is the MKS tradition extended.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Takeaways</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li>MKS (metre, kilogram, second) is the coherent mechanical core of SI, proposed by Giorgi in 1901 and adopted as SI in 1960.</li>
+        <li>Coherence means derived-unit equations need no extra conversion factors.</li>
+        <li>1 N = 100,000 dyn and 1 J = 10,000,000 erg — the factors that coherence removes.</li>
+        <li>For the full base-unit set, see <a href="/blog/metric-system-explained">Metric System Basics</a>; for unit conventions in general, see <a href="/blog/measurement-units-guide">Common Measurement Units</a>.</li>
+      </ul>
+
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Primary Sources</h2>
       <ul className="list-disc pl-6 mb-6">
         <li><a href="https://www.bipm.org/en/publications/si-brochure" rel="noopener noreferrer">BIPM: The International System of Units (SI Brochure)</a></li>

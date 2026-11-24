@@ -61,6 +61,40 @@ export default function DimensionlessNumbers() {
         <li>Applying a threshold from one geometry or flow regime to a different problem.</li>
       </ul>
 
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">The Buckingham Pi Theorem, in Plain Terms</h2>
+      <p>The Buckingham Pi theorem says that a problem with n variables and k fundamental dimensions can be rewritten using n − k independent dimensionless groups. In practice, that means a fluid-flow problem with velocity, length, density, and viscosity (4 variables, 3 dimensions: mass, length, time) collapses to one group — the Reynolds number. Engineers use this to design scale models: if the model and the real thing share the same Reynolds number, the flow behaviour matches even though the sizes differ. A ship model tested in a towing tank and a full-size ship in the ocean are compared through Reynolds (and Froude) numbers, not through raw speeds.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Froude Number: Waves and Ships</h2>
+      <p>The Froude number compares inertial effects with gravity: <strong>Fr = v ÷ √(gL)</strong>, where v is speed, g is gravitational acceleration, and L is a characteristic length. A ship travelling at 10 m/s with a waterline length of 100 m has Fr = 10 ÷ √(9.81 × 100) ≈ 0.32. Model ships are tested at the same Froude number as the full-size vessel so the wave pattern matches. Unlike Reynolds number, which governs viscosity, Froude governs free-surface waves — which is why towing-tank tests match Froude and correct separately for Reynolds effects.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Nusselt Number: Heat Transfer</h2>
+      <p>The Nusselt number compares convective heat transfer with conductive heat transfer: <strong>Nu = hL ÷ k</strong>, where h is the convective coefficient, L is a characteristic length, and k is thermal conductivity. A Nusselt number of 1 means heat moves by conduction alone; larger values mean convection dominates. Heat-exchanger design relies on correlations that express Nu as a function of Reynolds and Prandtl numbers, which lets one correlation cover many fluids, sizes, and speeds — the same dimensionless-group logic as in fluid flow.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Dimensionless Numbers in Everyday Life</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li><strong>Aspect ratio:</strong> a screen's 16:9 is a ratio of two lengths — dimensionless, and the reason a 16:9 phone and a 16:9 television show the same shape at different sizes.</li>
+        <li><strong>Gear ratio:</strong> teeth on one gear divided by teeth on another; a 3:1 ratio means the same speed change on a bicycle or a truck.</li>
+        <li><strong>Specific gravity:</strong> a material's density divided by water's density; a value of 0.8 means the material floats.</li>
+        <li><strong>Percent:</strong> a ratio scaled by 100 — the reason a 20% slope and a 20% discount are the same kind of number applied to different things.</li>
+      </ul>
+      <p>These everyday ratios work the same way as Reynolds and Mach numbers: they strip away units so the relationship itself can be compared. The unit systems they sit on top of are covered in <a href="/blog/metric-system-explained">Metric System Basics</a>, and the natural-unit conventions that set constants to one are covered in <a href="/blog/natural-units-system">Natural Units in Physics</a>.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Frequently Asked Questions</h2>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">What is the SI unit of a dimensionless quantity?</h3>
+      <p>One, symbol 1 — though the symbol is normally omitted. A strain of 0.0005 is written as 0.0005, not 0.0005 "ones".</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Can a dimensionless number be greater than one?</h3>
+      <p>Yes, often. Reynolds numbers in pipes are routinely in the thousands, and a Mach number above 1 simply means supersonic flow. "Dimensionless" describes the units, not the size.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Why do scale models work at all?</h3>
+      <p>Because the physics depends on dimensionless groups, not on absolute size. Match the governing groups — Reynolds for viscosity, Froude for waves — and the model behaves like the real thing.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Takeaways</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li>Dimensionless numbers are ratios; their coherent SI unit is one, usually unwritten.</li>
+        <li>Reynolds governs viscosity, Mach governs compressibility, Froude governs waves, Nusselt governs heat transfer.</li>
+        <li>The Buckingham Pi theorem explains why a few groups can replace many variables.</li>
+        <li>Always convert to consistent units before the dimensions cancel — millimetres against metres is the classic error.</li>
+      </ul>
+
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Primary Sources</h2>
       <ul className="list-disc pl-6 mb-6">
         <li><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values" rel="noopener noreferrer">NIST Guide to SI: quantities expressed with the unit one</a></li>

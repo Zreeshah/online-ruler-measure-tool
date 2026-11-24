@@ -8,7 +8,10 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-gray-500">
-              © 2026 Online Ruler. All rights reserved.
+              © 2026 Online Ruler. All rights reserved. Contact:{" "}
+              <a href="mailto:contact@online-ruler.onl" className="text-ruler-primary hover:underline">
+                contact@online-ruler.onl
+              </a>
             </p>
           </div>
           <div className="flex flex-wrap gap-4 justify-center md:justify-end">
@@ -23,6 +26,15 @@ const Footer: React.FC = () => {
             </Link>
             <Link href="/disclaimer" className="inline-flex min-h-12 items-center text-sm text-ruler-primary hover:underline">
               Disclaimer
+            </Link>
+            <Link href="/print-ruler" className="inline-flex min-h-12 items-center text-sm text-ruler-primary hover:underline">
+              Print Ruler
+            </Link>
+            <Link href="/blog" className="inline-flex min-h-12 items-center text-sm text-ruler-primary hover:underline">
+              Guides
+            </Link>
+            <Link href="/terms" className="inline-flex min-h-12 items-center text-sm text-ruler-primary hover:underline">
+              Terms of Use
             </Link>
           </div>
         </div>

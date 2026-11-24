@@ -97,8 +97,16 @@ export default function RootLayout({
                   contactPoint: {
                     '@type': 'ContactPoint',
                     contactType: 'customer support',
-                    email: 'info@online-ruler.onl',
+                    email: 'contact@online-ruler.onl',
                     availableLanguage: 'English',
+                  },
+                  address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: '130 General Nelson Dr',
+                    addressLocality: 'Richmond',
+                    addressRegion: 'Kentucky',
+                    postalCode: '40475',
+                    addressCountry: 'US',
                   },
                 },
                 {
@@ -126,11 +134,6 @@ export default function RootLayout({
             gtag('config', 'G-V7EWLNFP75');
           `}
         </Script>
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6218065184548996"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
         <Providers>
           {children}
         </Providers>

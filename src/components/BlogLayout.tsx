@@ -89,7 +89,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ children, currentUrl, publishDa
                 <Clock size={16} className="mr-1" />
                 <span>
                   Published: <time dateTime={publishedIso}>{publishDate}</time>
-                  {article?.modifiedDate && <> · Updated: <time dateTime={article.modifiedDate}>August 12, 2026</time></>}
+
                 </span>
               </div>
               <ShareButton title={article?.title || 'Online Ruler measurement guide'} url={canonicalUrl} />

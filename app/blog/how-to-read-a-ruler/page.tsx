@@ -74,6 +74,36 @@ export default function HowToReadARuler() {
       
       <p>Record only the resolution your ruler supports. A millimetre ruler does not justify reporting hundredths of a millimetre, and a 1/16-inch ruler does not justify a smaller fraction without another instrument.</p>
 
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Reading Fractions, Decimals, and Mixed Numbers</h2>
+      <p>Metric and imperial rulers demand different reading habits. On a metric ruler, every reading is a decimal: 3.7 cm means 3 cm plus 7 mm, and the same length can always be written as 37 mm. On an imperial ruler, readings are fractions with a denominator that matches the smallest division: 2 5/8 in on a ruler divided into eighths. The two systems do not mix on the same scale, so check which edge of the ruler you are reading before you record a value.</p>
+      <p>When a measurement falls between two marks, report the nearer mark and note the uncertainty rather than inventing a more precise digit. On a millimetre ruler, a reading between 41 mm and 42 mm is best reported as about 41.5 mm. On a 1/16-inch ruler, a position halfway between 2 3/16 in and 2 1/4 in is about 2 7/32 in — but most practical work rounds to the nearest sixteenth, 2 3/16 in or 2 1/4 in, and says so.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Ruler Types and When Each One Helps</h2>
+      <p>Not every ruler reads the same way. A rigid wooden or plastic school ruler suits paper and classroom work. A steel rule is thinner, stays flat, and is the usual choice for workshop marking because its edge can sit tight against the work. A flexible tape or seamstress tape follows curves that a rigid ruler cannot. A folding rule reaches into gaps, and a transparent ruler lets you see the lines underneath, which helps when aligning drawings or photographs.</p>
+      <p>Check the smallest division before you choose. A ruler marked only in centimetres cannot support a millimetre reading, and a tape marked in eighths of an inch cannot support a sixteenth. The instrument sets the resolution; wishing for more precision does not create it.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Reading a Ruler for Sewing, Crafts, and Printing</h2>
+      <p>Craft work often mixes systems in one project: fabric is commonly sold by the yard or metre, patterns may be printed in inches, and seam allowances are usually 1.5 cm or 5/8 in. Read the pattern's stated unit first, then measure twice — once in the printed unit and once converted — before cutting. For print work, remember that a screen ruler is only an estimate until calibrated; our <a href="/blog/how-to-measure-on-phone">phone-screen guide</a> explains the calibration step, and the <a href="/print-ruler">printable ruler</a> includes a 100 mm test line so you can verify a printed scale with a physical ruler.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Frequently Asked Questions</h2>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Why do some rulers start at 1 instead of 0?</h3>
+      <p>Some rulers have a margin before the zero mark, and a damaged end can make the zero unreadable. Start from a clear numbered mark and subtract it from the far-end reading, as shown in the damaged-zero section above.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">What is the smallest measurement a standard ruler can show?</h3>
+      <p>A metric school ruler usually reads to 1 mm. A common imperial ruler reads to 1/16 in (about 1.6 mm). Finer work needs a vernier caliper or micrometer, not a ruler.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">How do I read a ruler in centimetres and inches at the same time?</h3>
+      <p>Use one edge at a time. Most dual-unit rulers put metric on one edge and imperial on the other; reading across the middle invites a unit mix-up. Convert after reading, using 1 in = 2.54 cm exactly.</p>
+      <h3 className="text-xl font-bold text-gray-900 mt-6 mb-3">Why does my measurement differ from someone else's?</h3>
+      <p>The usual causes are a different zero point, a different viewing angle (parallax), different units, or a worn ruler end. Repeat the measurement with the same zero mark and eye position to find the difference.</p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Takeaways</h2>
+      <ul className="list-disc pl-6 mb-6">
+        <li>Longest lines are whole units; shorter lines are fractions or subdivisions of them.</li>
+        <li>Metric readings are decimals; imperial readings are fractions tied to the smallest division.</li>
+        <li>Always start at the zero mark — or subtract a clear starting mark when zero is damaged.</li>
+        <li>Report only the resolution the ruler supports, and view the scale straight on.</li>
+        <li>For technique rather than reading, see <a href="/blog/how-to-use-a-ruler">How to Use a Ruler</a>.</li>
+      </ul>
+
       <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Primary Sources</h2>
       <ul className="list-disc pl-6 mb-6">
         <li><a href="https://www.nist.gov/pml/owm/si-units-length" rel="noopener noreferrer">NIST: SI Units—Length</a></li>
